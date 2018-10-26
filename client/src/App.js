@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import ProductCard from './components/ProductCard'
+import './Products.css'
 
 
 class App extends Component {
@@ -17,8 +19,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.products.map(product => <img key={product.id} src={product.img_url} alt={product.name}/>)}
+      <div className="App">
+        {this.state.products.map(product => <ProductCard key={product.id} product={product} />)}
       </div>
     );
   }
