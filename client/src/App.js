@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {console.log(this.state)}
+        {this.state.products.map(product => <img key={product.id} src={product.img_url} alt={product.name}/>)}
       </div>
     );
   }
