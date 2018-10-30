@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import { getProducts } from '../actions/products'
 import ProductCard from '../components/ProductCard'
 import '../Products.css'
 
 
 class ProductsContainer extends Component {
-    state = {
-        products: []
-      }
+    
 
       componentDidMount() {
-        fetch("http://10.0.0.99:3001/products")
-        .then(resp => resp.json())
-        .then(products => this.setState({ products }))
+       this.props.getProducts()
       }
 
     render() {
         return (
             <div className="ProductsContainer">
-                {this.state.products.map(product => <ProductCard key={product.id} product={product} />)}
+                {this.props.products.map(product => <ProductCard key={product.id} product={product} />)}
                 
             </div>
         )
     }
 }
 
-export default ProductsContainer;
+const mapStateToProps = (state) => {
+    return ({
+        products: state.products
+    })
+}
+
+export default connect(mapStateToProps, { getProducts })(ProductsContainer);
