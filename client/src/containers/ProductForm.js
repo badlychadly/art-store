@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import { addProduct } from '../actions/products'
 
 
 class ProductForm extends Component {
@@ -9,6 +12,13 @@ class ProductForm extends Component {
         img_url: ""
     }
 
+
+    handleOnSubmit = event => {
+        event.preventDefault()
+        this.props.addProduct(this.state)
+    }
+
+
     handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -18,7 +28,7 @@ class ProductForm extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleOnSubmit}>
                     <div>
                         <label htmlFor="name">Name: </label>
                         <input type="text" name="name" onChange={this.handleOnChange} value={this.state.name}/>
@@ -35,10 +45,13 @@ class ProductForm extends Component {
                         <label htmlFor="img_url">Image_Url: </label>
                         <input type="text" name="img_url" onChange={this.handleOnChange} value={this.state.img_url}/>
                     </div>
+                    <div>
+                        <input type="submit" value="Add"/>
+                    </div>
                 </form>
             </div>
         )
     }
 }
 
-export default ProductForm;
+export default connect(null, { addProduct })(ProductForm);
