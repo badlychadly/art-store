@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import './App.css';
 import NavbarMain from './components/NavbarMain'
 import ProductsContainer from './containers/ProductsContainer';
 import ProductForm from './containers/ProductForm'
+import ProductShow from './components/ProductShow'
+import ProductRouter from './containers/ProductRouter'
 
 
 class App extends Component {
@@ -11,8 +14,12 @@ class App extends Component {
     return (
       <div className="App">
         <NavbarMain />
-        <ProductForm />
-        <ProductsContainer />
+        {/* <Route exact path="/" component={ProductsContainer} />
+        <Route path={`/products/:productId`} component={ProductShow} /> */}
+        <ProductRouter />
+        
+        {/* <ProductForm /> */}
+        {/* <ProductsContainer /> */}
       </div>
     );
   }
