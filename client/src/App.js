@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 import './App.css';
 import NavbarMain from './components/NavbarMain'
-import ProductsContainer from './containers/ProductsContainer';
 import ProductForm from './containers/ProductForm'
 import ProductShow from './components/ProductShow'
 import ProductRouter from './containers/ProductRouter'
@@ -19,7 +18,6 @@ class App extends Component {
         <ProductRouter />
         
         {/* <ProductForm /> */}
-        {/* <ProductsContainer /> */}
       </div>
     );
   }

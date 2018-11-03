@@ -9,11 +9,11 @@ import '../Products.css'
 
 
 function ProductRouter(props) {
+    console.log(props)
     return (
         <div>
-            {console.log(props)}
             <Route exact path="/" render={routerProps => <ProductsContainer getProducts={props.getProducts} products={props.products} {...routerProps} />} />
-            <Route path={`/products/:productId`} component={ProductShow} />
+            <Route exact path={`/products/:productId`} render={routerProps => (<ProductShow products={props.products} location={routerProps.location} {...routerProps} />)} />
         </div>
     )
 }

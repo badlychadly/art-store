@@ -10,6 +10,7 @@ import '../Products.css'
 
 class ProductsContainer extends Component {
     
+    
 
       componentDidMount() {
        this.props.getProducts()
@@ -27,11 +28,10 @@ class ProductsContainer extends Component {
 
 
     render() {
+        // debugger;
         return (
             <div className="ProductsContainer">
-                {this.listProducts(this.props.products)}
-        {/* <Route path={`/products/:productId`} component={ProductShow} /> */}
-                
+                {this.listProducts(this.props.products)}                
             </div>
         )
     }
