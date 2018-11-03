@@ -9,8 +9,8 @@ import '../Products.css'
 
 
 // OPTIONS
-// COULD TRY WITHROUTER
-// COULD FETCH PRODUCTS IN PRODUCTROUTER SO THEY ARE IN STATE FOR PRODUCTSSHOW
+// WHY DOES PRODUCTSHOW HAVE EMPTY PRODUCTS PROPS?
+// WHY ARE COMPONENTS RENDERED TWICE?
 
 
 class ProductRouter extends Component {
@@ -23,7 +23,7 @@ class ProductRouter extends Component {
 
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div>
                 <Route exact path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
