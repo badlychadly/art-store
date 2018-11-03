@@ -4,6 +4,7 @@ import React from 'react'
 
 const ProductShow = (props) => {
     const product = props.products.find(({ id }) => id === props.match.params.productId)
+    console.log(props)
     // props.location = {pathname: `/products/${product.id}` }
     return (
         <div>

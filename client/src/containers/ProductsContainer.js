@@ -8,16 +8,16 @@ import ProductCard from '../components/ProductCard'
 import '../Products.css'
 
 
-class ProductsContainer extends Component {
+const ProductsContainer = (props) => {
     
     
 
-      componentDidMount() {
-       this.props.getProducts()
-      }
+    //   componentDidMount() {
+    //    this.props.getProducts()
+    //   }
 
 
-      listProducts = products => {
+      const listProducts = products => {
         return (
             products.map(product => 
             <Link key={product.id} to={`/products/${product.id}`}>
@@ -27,14 +27,12 @@ class ProductsContainer extends Component {
       }
 
 
-    render() {
         // debugger;
         return (
             <div className="ProductsContainer">
-                {this.listProducts(this.props.products)}                
+                {listProducts(props.products)}                
             </div>
         )
-    }
 }
 
 export default ProductsContainer
