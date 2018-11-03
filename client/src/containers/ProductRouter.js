@@ -8,9 +8,6 @@ import ProductShow from '../components/ProductShow'
 import '../Products.css'
 
 
-// OPTIONS
-// WHY DOES PRODUCTSHOW HAVE EMPTY PRODUCTS PROPS?
-// WHY ARE COMPONENTS RENDERED TWICE?
 
 
 class ProductRouter extends Component {
