@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
-import { getProducts } from '../actions/products'
+import { getProducts, deleteProduct } from '../actions/products'
 import ProductsContainer from './ProductsContainer'
 import ProductShow from '../components/ProductShow'
 import '../Products.css'
@@ -24,7 +24,7 @@ class ProductRouter extends Component {
         return (
             <div>
                 <Route exact path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
-                <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} location={routerProps.location} {...routerProps} />)} />
+                <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} location={routerProps.location} {...routerProps} />)} />
             </div>
         )
     }
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { getProducts })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct })(ProductRouter);

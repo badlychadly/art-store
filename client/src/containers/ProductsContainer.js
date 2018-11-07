@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import { connect } from 'react-redux'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // import { getProducts } from '../actions/products'
 import ProductCard from '../components/ProductCard'
@@ -10,11 +10,6 @@ import '../Products.css'
 
 const ProductsContainer = (props) => {
     
-    
-
-    //   componentDidMount() {
-    //    this.props.getProducts()
-    //   }
 
 
       const listProducts = products => {
@@ -27,7 +22,6 @@ const ProductsContainer = (props) => {
       }
 
 
-        // debugger;
         return (
             <div className="ProductsContainer">
                 {listProducts(props.products)}                
@@ -37,10 +31,3 @@ const ProductsContainer = (props) => {
 
 export default ProductsContainer
 
-// const mapStateToProps = (state) => {
-//     return ({
-//         products: state.products
-//     })
-// }
-
-// export default connect(mapStateToProps, { getProducts })(ProductsContainer);

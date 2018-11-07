@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+    before_action :find_product, only: [:destroy]
+    
 
     def index 
         render json: Product.all
@@ -14,7 +16,7 @@ class ProductsController < ApplicationController
 
     def destroy
         @product.destroy
-        render status: 204
+        render json: @product, status: 204
     end
 
 

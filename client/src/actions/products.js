@@ -32,3 +32,19 @@ export const addProduct = formData => {
         .catch(error => console.log(error))
     }
 }
+
+
+export const deleteProduct = product => {
+    // debugger;
+    return dispatch => {
+        return fetch(`http://10.0.0.99:3001/products/${product.id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        .then(resp => dispatch({type: "DELETE_PRODUCT", product}))
+        // .then(data => console.log(data))
+    }
+}

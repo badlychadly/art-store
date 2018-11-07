@@ -7,8 +7,9 @@ export default (state = [], action) => {
         case "ADD_PRODUCT":
             return state.concat(action.product)
         case "DELETE_PRODUCT":
-            const products = state.products.filter(product => product.id !== action.id);
-            return { ...state, products}
+            // debugger;
+            const products = state.filter(product => product.id !== action.product.id);
+            return products 
     
         default:
             return state;
