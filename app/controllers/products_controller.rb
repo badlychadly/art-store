@@ -12,6 +12,12 @@ class ProductsController < ApplicationController
     end
 
 
+    def destroy
+        @product.destroy
+        render status: 204
+    end
+
+
     private
 
     def find_product

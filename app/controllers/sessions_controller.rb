@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
 
 
     def create
-      # binding.pry
         admin = Admin.find_by(username: auth_params[:username])
         if admin.authenticate(auth_params[:password])
           jwt = Auth.issue({admin: admin.id})
