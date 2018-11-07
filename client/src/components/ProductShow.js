@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button } from 'reactstrap';
 
-// PRODUCTS SHOWING UP EMPTY
 
 const ProductShow = (props) => {
     // debugger;

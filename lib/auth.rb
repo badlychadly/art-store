@@ -9,7 +9,7 @@ class Auth
           payload,
           auth_secret,
           ALGORITHM)
-      end
+    end
 
   def self.decode(token)
     JWT.decode(token, 

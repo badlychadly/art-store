@@ -14,6 +14,7 @@ class AdminForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
+        
         fetch('http://10.0.0.99:3001/login', {
             method: 'POST',
             headers: {
@@ -22,13 +23,14 @@ class AdminForm extends Component {
             body: JSON.stringify({auth: this.state.credentials})
         })
         .then(resp => resp.json())
-        .catch(err => console.log(err))
+        .then(data => data)
+        // .catch(err => console.log(err))
     }
 
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleOnSubmit} >
                     <div>
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username" onChange={this.handleOnChange} value={this.state.credentials.username}/>
@@ -36,6 +38,7 @@ class AdminForm extends Component {
                     <div>
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" onChange={this.handleOnChange} value={this.state.credentials.password}/>
+                        <input type="submit" name="submit" value="login"/>
                     </div>
                 </form>
             </div>
