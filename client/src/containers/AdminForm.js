@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { sessionActions } from '../actions/session'
+import { logInUser } from '../actions/session'
 
 
 class AdminForm extends Component {
@@ -17,17 +17,17 @@ class AdminForm extends Component {
     handleOnSubmit = event => {
         event.preventDefault()
         
-        fetch('http://10.0.0.99:3001/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({auth: this.state.credentials})
-        })
-        .then(resp => resp.json())
-        .then(data => data)
+        // fetch('http://10.0.0.99:3001/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({auth: this.state.credentials})
+        // })
+        // .then(resp => resp.json())
+        // .then(data => data)
         // .catch(err => console.log(err))
-        this.props.actions.logInUser(this.state.credentials)
+        this.props.logInUser(this.state.credentials)
     }
 
     render() {
@@ -51,4 +51,4 @@ class AdminForm extends Component {
 }
 
 
-export default connect(null, { sessionActions })(AdminForm)
+export default connect(null, { logInUser })(AdminForm)
