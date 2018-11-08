@@ -15,3 +15,9 @@ export function loginSuccess() {
       });
     };
   }
+
+
+  export function logOutUser() {  
+    sessionStorage.removeItem('jwt');
+    return {type: "LOG_OUT"}
+  }
