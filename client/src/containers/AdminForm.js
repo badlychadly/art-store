@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { sessionActions } from '../actions/session'
 
 
 class AdminForm extends Component {
@@ -25,6 +27,7 @@ class AdminForm extends Component {
         .then(resp => resp.json())
         .then(data => data)
         // .catch(err => console.log(err))
+        this.props.actions.logInUser(this.state.credentials)
     }
 
     render() {
@@ -48,4 +51,4 @@ class AdminForm extends Component {
 }
 
 
-export default AdminForm
+export default connect(null, { sessionActions })(AdminForm)
