@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavbarMain />
-        <AdminForm />
+        {/* <AdminForm /> */}
 
         <Route component={ProductRouter} />
         

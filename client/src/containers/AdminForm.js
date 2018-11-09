@@ -27,10 +27,13 @@ class AdminForm extends Component {
         // .then(resp => resp.json())
         // .then(data => data)
         // .catch(err => console.log(err))
-        this.props.logInUser(this.state.credentials)
+        // console.log(this.props.logInUser(this.state.credentials, this.props.history))
+        this.props.logInUser(this.state.credentials, this.props.history)
     }
 
     render() {
+        // debugger;
+        // console.log(this.props.history.push)
         return (
             <div>
                 <form onSubmit={this.handleOnSubmit} >

@@ -1,6 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
+// import AdminForm from './AdminForm'
 
 // import { getProducts } from '../actions/products'
 import ProductCard from '../components/ProductCard'
@@ -24,7 +25,8 @@ const ProductsContainer = (props) => {
 
         return (
             <div className="ProductsContainer">
-                {listProducts(props.products)}                
+                {listProducts(props.products)}    
+                {/* <Route exact path="/admin/login" render={routerProps => <AdminForm {...routerProps} />} />             */}
             </div>
         )
 }

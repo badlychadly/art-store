@@ -6,6 +6,8 @@ import { getProducts, deleteProduct } from '../actions/products'
 import { logOutUser } from '../actions/session'
 import ProductsContainer from './ProductsContainer'
 import ProductShow from '../components/ProductShow'
+import AdminForm from './AdminForm'
+
 import '../Products.css'
 
 
@@ -30,8 +32,10 @@ class ProductRouter extends Component {
         return (
             <div>
                 <div><button onClick={this.logOut}>log out</button></div>
-                <Route exact path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
-                <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} location={routerProps.location} {...routerProps} />)} />
+                <Route exact path="/admin/login" render={routerProps => <AdminForm {...routerProps} />} />            
+                
+                <Route path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
+                <Route exact path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
             </div>
         )
     }
