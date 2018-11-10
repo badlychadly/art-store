@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Link } from 'react-router-dom'
 import { logInUser } from '../actions/session'
 
 
@@ -45,7 +47,6 @@ import { logInUser } from '../actions/session'
 
 
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class AdminForm extends React.Component {
   constructor(props) {
@@ -63,6 +64,9 @@ class AdminForm extends React.Component {
 //       modal: !this.state.modal
 //     });
 //   }
+
+
+
 
   handleOnChange = event => {
     const field = event.target.name;
@@ -97,8 +101,8 @@ handleOnSubmit = event => {
             {/* </div> */}
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Login</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="primary" name="submit" onClick={this.toggle}>Login</Button>{' '}
+            <Button color="secondary" tag={Link} to="/">Cancel</Button>
           </ModalFooter>
                 </form>
         </Modal>
