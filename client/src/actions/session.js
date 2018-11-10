@@ -11,7 +11,6 @@ export function loginSuccess() {
         sessionStorage.setItem('jwt', response.jwt);
         dispatch(loginSuccess());
         !response.jwt || history.push('/')
-        // history.push('/')
       }).catch(error => {
         throw(error);
       });

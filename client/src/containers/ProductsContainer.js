@@ -1,11 +1,7 @@
 import React from 'react';
-// import { connect } from 'react-redux'
-import { Link, Route } from 'react-router-dom'
-// import AdminForm from './AdminForm'
+import { Link } from 'react-router-dom'
 
-// import { getProducts } from '../actions/products'
 import ProductCard from '../components/ProductCard'
-// import ProductShow from '../components/ProductShow'
 import '../Products.css'
 
 
@@ -22,11 +18,10 @@ const ProductsContainer = (props) => {
     ))
       }
 
-
+    //   console.log(props.history)
         return (
             <div className="ProductsContainer">
-                {listProducts(props.products)}    
-                {/* <Route exact path="/admin/login" render={routerProps => <AdminForm {...routerProps} />} />             */}
+                {listProducts(props.products)} 
             </div>
         )
 }

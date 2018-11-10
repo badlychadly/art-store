@@ -12,7 +12,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-
+  import { NavLink as RouterNavLink} from 'react-router-dom'
+  import { logOutUser } from '../actions/session'
+  
+  
 export default class NavbarMain extends React.Component {
   constructor(props) {
     super(props);
@@ -27,11 +30,16 @@ export default class NavbarMain extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  handleLogOut = event => {
+    logOutUser()
+  }
+
   render() {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand tag={RouterNavLink} to="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -53,8 +61,8 @@ export default class NavbarMain extends React.Component {
                     Option 2
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
+                  <DropdownItem onClick={this.handleLogOut}>
+                    Logout
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -65,3 +73,4 @@ export default class NavbarMain extends React.Component {
     );
   }
 }
+
