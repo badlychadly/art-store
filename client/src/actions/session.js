@@ -11,9 +11,10 @@ export function loginSuccess() {
         debugger;
         sessionStorage.setItem('jwt', response.jwt);
         dispatch(loginSuccess());
+        // HANDLE WHEN JWT COMES BACK AS STRING UNDEFINED
         !response.jwt || history.push('/')
       }).catch(error => {
-        throw(error);
+        debugger;
       });
     };
   }

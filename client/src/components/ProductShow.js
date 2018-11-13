@@ -15,7 +15,7 @@ const ProductShow = (props) => {
         )
     }
 
-    console.log(props)
+    // console.log(props)
     return props.products.length ? (
         <div>
             Show page

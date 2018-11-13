@@ -15,8 +15,16 @@ class SessionApi {
         },
         body: JSON.stringify({auth: credentials})
     })
-    .then(resp => resp.json())
-    .catch(error => error)
+    .then(resp => {
+      debugger;
+      if (resp.ok) {
+        return resp.json()
+      } else throw Error(resp.body)
+
+    })
+    .catch(error => {
+      debugger;
+    })
     // .then(data => data)
   
   

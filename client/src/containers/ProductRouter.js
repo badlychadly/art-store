@@ -7,7 +7,7 @@ import { logOutUser } from '../actions/session'
 import ProductsContainer from './ProductsContainer'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
-// import NavbarMain from '../components/NavbarMain'
+import NavbarMain from '../components/NavbarMain'
 
 
 import '../Products.css'
@@ -21,11 +21,6 @@ class ProductRouter extends Component {
     componentDidMount() {
         this.props.getProducts()
     }
-
-    logOut = event => {
-        event.preventDefault();
-        this.props.logOutUser();
-      }
        
 
 
@@ -33,9 +28,8 @@ class ProductRouter extends Component {
         // console.log(this.props)
         return (
             <div>
-            {/* <NavbarMain /> */}
+            <NavbarMain logOutUser={this.props.logOutUser} />
                 
-                {/* <div><button onClick={this.logOut}>log out</button></div> */}
                 <Route exact path="/admin/login" render={routerProps => <AdminForm {...routerProps} />} />            
                 <Switch>
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />

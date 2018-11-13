@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Navbar,
@@ -13,28 +13,29 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
   import { NavLink as RouterNavLink} from 'react-router-dom'
-  import { logOutUser } from '../actions/session'
+  // import { logOutUser } from '../actions/session'
   
   
-export default class NavbarMain extends React.Component {
+export default class NavbarMain extends Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
+    // this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
     };
   }
-  toggle() {
+  toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
   handleLogOut = event => {
-    logOutUser()
+    // debugger
+    this.props.logOutUser()
   }
-
+  
   render() {
     return (
       <div>
