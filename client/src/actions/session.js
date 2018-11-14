@@ -8,14 +8,20 @@ export function loginSuccess() {
   export function logInUser(credentials, history) {  
     return function(dispatch) {
       return sessionApi.login(credentials).then(response => {
-        debugger;
-        sessionStorage.setItem('jwt', response.jwt);
-        dispatch(loginSuccess());
-        // HANDLE WHEN JWT COMES BACK AS STRING UNDEFINED
-        !response.jwt || history.push('/')
-      }).catch(error => {
-        debugger;
-      });
+        // debugger;
+        if (!!response.jwt) {
+          sessionStorage.setItem('jwt', response.jwt);
+          dispatch(loginSuccess());
+          // HANDLE WHEN JWT COMES BACK AS STRING UNDEFINED
+          !response.jwt || history.push('/') 
+        } else {
+          dispatch({type: "LOG_IN_FAIL"})
+        }
+        // return response.jwt
+      })
+      // .catch(error => {
+      //   debugger;
+      // });
     };
   }
 

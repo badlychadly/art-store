@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
           jwt = Auth.issue({admin: admin.id})
           render json: {jwt: jwt}
         else
-          render json: admin, status: 404, message: 'incorrect credentials homie'
+          render json: {status: 404, message: "incorrect credentials"}
         end
       end
 

@@ -30,7 +30,7 @@ class ProductRouter extends Component {
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} />
                 
-                <Route exact path="/admin/login" render={routerProps => <AdminForm {...routerProps} />} />            
+                <Route exact path="/admin/login" render={routerProps => <AdminForm logged_in={this.props.logged_in} {...routerProps} />} />            
                 <Switch>
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
                     <Route path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
@@ -43,8 +43,8 @@ class ProductRouter extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return ({
-        products: state.products,
-        logged_in: state.session
+        products: state.products
+        // logged_in: state.session
     })
 }
 

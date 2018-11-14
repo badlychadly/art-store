@@ -2,10 +2,14 @@ import initialState from './initialState';
 
 
 
-export default function sessionReducer(state = initialState.session, action) {
+export default function sessionReducer(state = initialState, action) {
+  // debugger;
     switch(action.type) {
       case "LOG_IN_SUCCESS":
-        return !!sessionStorage.jwt
+      // debugger;
+        return {...state, session: !!sessionStorage.jwt}
+      case "LOG_IN_FAIL":
+        return {...state, failedLogin: !state.failedLogin}
       case "LOG_OUT":
       // debugger;
         return !!sessionStorage.jwt
