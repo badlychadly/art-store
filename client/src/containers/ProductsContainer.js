@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { CardColumns } from 'reactstrap';
 
 import ProductCard from '../components/ProductCard'
 import '../Products.css'
@@ -7,6 +8,9 @@ import '../Products.css'
 
 const ProductsContainer = (props) => {
     
+    
+
+
 
 
       const listProducts = products => {
@@ -18,11 +22,15 @@ const ProductsContainer = (props) => {
     ))
       }
 
-    //   console.log(props.history)
         return (
-            <div className="ProductsContainer">
-                {listProducts(props.products)} 
-            </div>
+            <CardColumns className="ProductsContainer">
+            
+                {listProducts(props.products)}
+           
+            </CardColumns>
+            // <div className="ProductsContainer">
+            //     {listProducts(props.products)} 
+            // </div>
         )
 }
 

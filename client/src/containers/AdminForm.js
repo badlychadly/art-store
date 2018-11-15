@@ -41,7 +41,7 @@ class AdminForm extends React.Component {
     this.setState({credentials: credentials});
 }
 
-// try adding redirect for when logged in
+// try adding children to Routes to render admin form on either page
 
 handleOnSubmit = event => {
     event.preventDefault()
@@ -80,7 +80,7 @@ handleInvalid = () => {
           placeholder="password" onChange={this.handleOnChange} 
           value={this.state.credentials.password} 
           />
-          <FormFeedback invalid={this.props.failedLogin.toString()}>Invalid Username or Password</FormFeedback>
+          <FormFeedback className="text-center" invalid={this.props.failedLogin.toString()}>Invalid Username or Password</FormFeedback>
           <FormText>Please Sign In</FormText>
           </FormGroup>
 

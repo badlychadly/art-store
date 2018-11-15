@@ -25,7 +25,7 @@ class ProductRouter extends Component {
 
 
     render() {
-        console.log(this.props.logged_in)
+        // console.log(this.props)
         return (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} />
