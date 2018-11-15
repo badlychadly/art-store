@@ -12,8 +12,6 @@ export function loginSuccess() {
         if (!!response.jwt) {
           sessionStorage.setItem('jwt', response.jwt);
           dispatch(loginSuccess());
-          // HANDLE WHEN JWT COMES BACK AS STRING UNDEFINED
-          !response.jwt || history.push('/') 
         } else {
           dispatch({type: "LOG_IN_FAIL"})
         }

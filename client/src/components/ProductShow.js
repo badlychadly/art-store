@@ -4,7 +4,6 @@ import { Button } from 'reactstrap';
 
 
 const ProductShow = (props) => {
-    // debugger;
     
     const product = props.products.find(({ id }) => String(id) === props.match.params.productId)
 

@@ -41,12 +41,11 @@ class AdminForm extends React.Component {
     this.setState({credentials: credentials});
 }
 
+// try adding redirect for when logged in
+
 handleOnSubmit = event => {
     event.preventDefault()
     this.props.logInUser(this.state.credentials, this.props.history)
-    // this.props.logged_in || this.setState({invalid: true})
-    console.log(this.props.logged_in)
-    // this.handleInvalid()
 }
 
 
@@ -56,7 +55,7 @@ handleInvalid = () => {
 
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     // debugger;
     return (
       <div>
@@ -69,26 +68,22 @@ handleInvalid = () => {
 
           <FormGroup>
           <Label for="username">Username</Label>
-          <Input invalid={this.props.failedLogin} name="username" onChange={this.handleOnChange} value={this.state.credentials.username} />
+          <Input invalid={this.props.failedLogin} 
+          name="username" onChange={this.handleOnChange} 
+          value={this.state.credentials.username} 
+          />
           
           <Label for="password">Password</Label>
-          <Input invalid={this.props.failedLogin} type="password" name="password" onChange={this.handleOnChange} value={this.state.credentials.password} />
-          <FormFeedback invalid={this.state.invalid.toString()}>Invalid Username or Password</FormFeedback>
-          <FormText>Invalid Username or Password</FormText>
+          <Input 
+          invalid={this.props.failedLogin} 
+          type="password" name="password" 
+          placeholder="password" onChange={this.handleOnChange} 
+          value={this.state.credentials.password} 
+          />
+          <FormFeedback invalid={this.props.failedLogin.toString()}>Invalid Username or Password</FormFeedback>
+          <FormText>Please Sign In</FormText>
           </FormGroup>
 
-
-          {/* <div> */}
-                    {/* <div> */}
-                        {/* <label htmlFor="username">Username</label>
-                        <input type="text" name="username" onChange={this.handleOnChange} value={this.state.credentials.username}/>
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" onChange={this.handleOnChange} value={this.state.credentials.password}/> */}
-                        {/* <input type="submit" name="submit" value="login"/> */}
-                    {/* </div> */}
-            {/* </div> */}
           </ModalBody>
           <ModalFooter>
             <Button color="primary" name="submit">Login</Button>{' '}
@@ -104,7 +99,7 @@ handleInvalid = () => {
 const mapStateToProps = state => {
   return ({
     failedLogin: state.session.failedLogin,
-    logged_in: state.session.session
+    // logged_in: state.session.hasToken
   })
 }
 
