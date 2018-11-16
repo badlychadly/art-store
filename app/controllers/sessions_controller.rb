@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
           render json: {jwt: jwt}
         else
           render json: {status: 401, message: "incorrect credentials"}
+          # render json: {body: "invalid credentials"}, status: 401
         end
       end
 

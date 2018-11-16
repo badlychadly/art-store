@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap';
+import ProductCard from './ProductCard'
 
 
 const ProductShow = (props) => {
@@ -19,7 +20,8 @@ const ProductShow = (props) => {
         <div>
             Show page
             <h3>{product.name}</h3>
-            <img src={product.img_url} alt={product.name}/>
+            <ProductCard product={product} />
+            {/* <img src={product.img_url} alt={product.name}/> */}
             <Link to='/'> 
                 {buttonView()}
             </Link>

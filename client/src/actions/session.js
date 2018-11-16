@@ -17,9 +17,9 @@ export function loginSuccess() {
         }
         // return response.jwt
       })
-      // .catch(error => {
-      //   debugger;
-      // });
+      .catch(error => {
+        debugger;
+      });
     };
   }
 

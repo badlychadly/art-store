@@ -25,6 +25,7 @@ class ProductRouter extends Component {
 
 
     render() {
+        // debugger;
         // console.log(this.props)
         return (
             <div>
