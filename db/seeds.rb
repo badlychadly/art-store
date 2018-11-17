@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.create(email: 'chad@gmail.com', password: 'chadly')
+
 
 p1 = Product.create(name: "multicolored-abstract-painting", price: "$400", description: "This is a painting description", img_url: "https://images.pexels.com/photos/935785/pexels-photo-935785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350")
 p2 = Product.create(name: "multicolored-smoke", price: "$300", description: "this is the second painting description", img_url: "https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350")

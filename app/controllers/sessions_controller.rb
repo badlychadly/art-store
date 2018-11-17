@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 
     def create
-        admin = Admin.find_by(username: auth_params[:username])
+        admin = Admin.find_by(email: auth_params[:email])
         if !!admin && admin.authenticate(auth_params[:password])
           jwt = Auth.issue({admin: admin.id})
           render json: {jwt: jwt}
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
 
       def auth_params
-        params.require(:auth).permit(:username, :password)
+        params.require(:auth).permit(:email, :password)
       end
 
 end

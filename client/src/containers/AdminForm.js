@@ -17,7 +17,7 @@ class AdminForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        credentials: {username: '', password: ''},
+        credentials: {email: '', password: ''},
         modal: true,
         invalid: false
     };
@@ -67,10 +67,10 @@ handleInvalid = () => {
 
 
           <FormGroup>
-          <Label for="username">Username</Label>
+          <Label for="email">Email</Label>
           <Input invalid={this.props.failedLogin} 
-          name="username" onChange={this.handleOnChange} 
-          value={this.state.credentials.username} 
+          name="email" onChange={this.handleOnChange} 
+          value={this.state.credentials.email} 
           />
           
           <Label for="password">Password</Label>
@@ -80,7 +80,7 @@ handleInvalid = () => {
           placeholder="password" onChange={this.handleOnChange} 
           value={this.state.credentials.password} 
           />
-          <FormFeedback className="text-center" invalid={this.props.failedLogin.toString()}>Invalid Username or Password</FormFeedback>
+          <FormFeedback className="text-center" invalid={this.props.failedLogin.toString()}>Invalid Email or Password</FormFeedback>
           <FormText>Please Sign In</FormText>
           </FormGroup>
 

@@ -25,13 +25,13 @@ class ProductRouter extends Component {
 
 
     render() {
-        // debugger;
-        // console.log(this.props)
+        debugger;
+        console.log(this.props)
         return (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} />
                 
-                <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />            
+                <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to={this.props.history.goBack()}/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />            
                 <Switch>
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
                     <Route path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
