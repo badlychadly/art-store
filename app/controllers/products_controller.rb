@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     before_action :find_product, only: [:destroy]
-    before_action :logged_in?, only: [:destroy]
+    before_action :logged_in?, only: [:destroy, :create]
     
 
     def index 
@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     def create
         product = Product.new(product_params)
         if product.save
-            render json: product
+            render json: product, status: 201
         end
     end
 
