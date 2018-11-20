@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
     before_action :find_product, only: [:destroy]
+    before_action :logged_in?, only: [:destroy]
     
 
     def index 

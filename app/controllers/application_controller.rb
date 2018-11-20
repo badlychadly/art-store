@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::API
 
-#      before_action :authenticate 
 
 
     def logged_in?
@@ -22,9 +21,11 @@ class ApplicationController < ActionController::API
 #     end
     private
 
+
       def token
-        request.env["HTTP_AUTHORIZATION"].scan(/Bearer 
-          (.*)$/).flatten.last
+        pattern = /^Bearer /
+        auth_header = request.env["HTTP_AUTHORIZATION"]
+        auth_header.gsub(pattern, '') if auth_header && auth_header.match(pattern)
       end
 
       def auth
@@ -33,6 +34,6 @@ class ApplicationController < ActionController::API
 
       def auth_present?
         !!request.env.fetch("HTTP_AUTHORIZATION", 
-          "").scan(/Bearer/).flatten.first
+          "").gsub(/^Bearer /, '')
       end 
 end

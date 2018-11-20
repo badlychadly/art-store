@@ -1,4 +1,7 @@
 
+function requestHeaders() {
+    return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+  }
 
 const setProducts = products => {
     return {
@@ -33,18 +36,21 @@ export const addProduct = formData => {
     }
 }
 
-
+// only delete if successful
 export const deleteProduct = product => {
+    const headers = Object.assign({'Content-Type': 'application/json'}, requestHeaders());
     // debugger;
     return dispatch => {
         return fetch(`http://10.0.0.99:3001/products/${product.id}`, {
             method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: headers,
             body: JSON.stringify(product)
         })
-        .then(resp => dispatch({type: "DELETE_PRODUCT", product}))
+        .then(resp => {
+            if (resp.ok) {
+                dispatch({type: "DELETE_PRODUCT", product})}
+            }
+        )
         // .then(data => console.log(data))
     }
 }

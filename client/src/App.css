@@ -1,7 +1,10 @@
 .App {
   text-align: center;
+  /* -webkit-transform: translate3d(0,0,0) */
+  /* -webkit-transform:translate3d(0,0,0); */
   /* background: rgb(28, 42, 66); */
 }
+/* SEE BOX SIZING BEFORE AFTER TO FIX JITTERS */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
