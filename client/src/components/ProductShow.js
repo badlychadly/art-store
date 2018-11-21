@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from 'reactstrap';
+import { Button, ListGroup, ListGroupItem, Badge, Container, Row, Col  } from 'reactstrap';
 import ProductCard from './ProductCard'
 
 
@@ -18,13 +18,27 @@ const ProductShow = (props) => {
     // console.log(props)
     return props.products.length ? (
         <div>
-            Show page
-            <h3>{product.name}</h3>
-            <ProductCard product={product} />
-            {/* <img src={product.img_url} alt={product.name}/> */}
-            <Link to='/'> 
-                {buttonView()}
-            </Link>
+            <h3 className="text-white">{product.name}</h3>
+            <Container>
+                <Row>
+                    <Col sm="8">
+                        <ProductCard product={product} />
+                        {/* <img src={product.img_url} alt={product.name}/> */}
+                    </Col>
+                    <Col>
+                        <ListGroup>
+                            <ListGroupItem className="justify-content-between">Cras justo odio <Badge href="#" className="" color="warning" pill>14</Badge></ListGroupItem>
+                            <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge pill>2</Badge></ListGroupItem>
+                            <ListGroupItem className="justify-content-between">Morbi leo risus <Badge pill>1</Badge></ListGroupItem>
+                        </ListGroup>
+                        <Link to='/'> 
+                            {buttonView()}
+                        </Link>
+                    </Col>
+
+                </Row>
+
+            </Container>
         </div>
     ) : <p>loading</p>
 }
