@@ -10,6 +10,9 @@ export default (state = [], action) => {
             // debugger;
             const products = state.filter(product => product.id !== action.product.id);
             return products 
+        case "UPDATE_PRODUCT":
+        debugger;
+            return [...state]
     
         default:
             return state;

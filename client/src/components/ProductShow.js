@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import { Button, ListGroup, ListGroupItem, Badge, Container, Row, Col  } from 'reactstrap';
 import ProductCard from './ProductCard'
+import EditForm from './EditProductForm'
 
 
 const ProductShow = (props) => {
@@ -27,11 +28,14 @@ const ProductShow = (props) => {
                     </Col>
                     <Col>
                         <ListGroup>
-                            <ListGroupItem className="justify-content-between">Cras justo odio <Badge href="#" className="" color="warning" pill>14</Badge></ListGroupItem>
+                            <ListGroupItem className="justify-content-between">Cras justo odio <Badge tag={Link} to={`/products/${product.id}/edit`} className="" color="warning" pill>edit</Badge></ListGroupItem>
                             <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge pill>2</Badge></ListGroupItem>
                             <ListGroupItem className="justify-content-between">Morbi leo risus <Badge pill>1</Badge></ListGroupItem>
                         </ListGroup>
+            <Route path={`/products/:productId/edit`} component={EditForm} />
+                        
                         <Link to='/'> 
+                        
                             {buttonView()}
                         </Link>
                     </Col>

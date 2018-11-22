@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 
 import { addProduct } from '../actions/products'
 
@@ -28,27 +29,52 @@ class ProductForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleOnSubmit}>
-                    <div>
-                        <label htmlFor="name">Name: </label>
-                        <input type="text" name="name" onChange={this.handleOnChange} value={this.state.name}/>
-                    </div>
-                    <div>
-                        <label htmlFor="price">Price: </label>
-                        <input type="text" name="price" onChange={this.handleOnChange} value={this.state.price}/>
-                    </div>
-                    <div>
-                        <label htmlFor="description">Description: </label>
-                        <input type="text" name="description" onChange={this.handleOnChange} value={this.state.description}/>
-                    </div>
-                    <div>
-                        <label htmlFor="img_url">Image_Url: </label>
-                        <input type="text" name="img_url" onChange={this.handleOnChange} value={this.state.img_url}/>
-                    </div>
-                    <div>
-                        <input type="submit" value="Add"/>
-                    </div>
-                </form>
+
+                 <Form onSubmit={this.handleOnSubmit} className="text-white">
+                    <FormGroup row>
+                        <Label for="name" sm={2}>Name</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="name" onChange={this.handleOnChange} value={this.state.name} id="name" placeholder="with a placeholder" />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="price" sm={2}>Price</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.price} id="price" placeholder="price placeholder" />
+                        </Col>
+                    </FormGroup>
+                    
+                    
+                    <FormGroup row>
+                    <Label for="description" sm={2}>Description</Label>
+                    <Col sm={10}>
+                        <Input type="textarea" name="description" onChange={this.handleOnChange} value={this.state.description} id="description" />
+                    </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                    <Label for="img_url" sm={2}>Img_url</Label>
+                    <Col sm={10}>
+                        <Input type="text" name="img_url" onChange={this.handleOnChange} value={this.state.img_url} id="price" placeholder="price placeholder" />
+                    </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                    <Label for="exampleFile" sm={2}>File</Label>
+                    <Col sm={10}>
+                        <Input type="file" name="file" id="exampleFile" />
+                        <FormText color="muted">
+                        This is some placeholder block-level help text for the above input.
+                        It's a bit lighter and easily wraps to a new line.
+                        </FormText>
+                    </Col>
+                    </FormGroup>
+                    
+                    <FormGroup check row>
+                    <Col sm={{ size: 10, offset: 2 }}>
+                        <Button color="primary">Submit</Button>
+                    </Col>
+                    </FormGroup>
+                </Form>
+
             </div>
         )
     }

@@ -27,8 +27,14 @@ export const addProduct = formData => {
 }
 
 
-export const deleteProduct = product => {
+export const updateProduct = formData => {
+    return dispatch => {
+        return ProductsApi.updateProduct(formData).then(product => dispatch({type: "UPDATE_PRODUCT", product}))
+    }
+}
 
+
+export const deleteProduct = product => {
     return dispatch => {
         return ProductsApi.deleteProduct(product).then(resp => {
             if (resp.ok) {

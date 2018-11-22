@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-    before_action :find_product, only: [:destroy]
-    before_action :logged_in?, only: [:destroy, :create]
+    # before_action :find_product, only: [:destroy, :update]
+    before_action :logged_in?, :find_product, only: [:destroy, :create, :update]
     
 
     def index 
@@ -12,6 +12,12 @@ class ProductsController < ApplicationController
         if product.save
             render json: product, status: 201
         end
+    end
+
+    def update
+        binding.pry
+        @product.update_attributes(product_params)
+        render json: @product, status: 202
     end
 
 

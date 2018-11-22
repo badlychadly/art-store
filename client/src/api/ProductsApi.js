@@ -23,6 +23,17 @@ class ProductsApi {
     }
 
 
+    static updateProduct(formData) {
+        const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders());
+        return fetch('http://10.0.0.99:3001/products', {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(formData)
+        })
+        .then(resp => resp.json())
+    }
+
+
     static deleteProduct(product) {
     const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders());
     
