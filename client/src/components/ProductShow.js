@@ -1,8 +1,11 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
-import { Button, ListGroup, ListGroupItem, Badge, Container, Row, Col  } from 'reactstrap';
+import { Button, ListGroup, ListGroupItem, Badge, Container, Row, Col, Input  } from 'reactstrap';
 import ProductCard from './ProductCard'
-import EditForm from './EditProductForm'
+// import EditForm from './EditProductForm'
+import './EditInput.css'
+import ProductInput from './ProductInput'
+import ProductForm from '../containers/ProductForm'
 
 
 const ProductShow = (props) => {
@@ -28,11 +31,27 @@ const ProductShow = (props) => {
                     </Col>
                     <Col>
                         <ListGroup>
-                            <ListGroupItem className="justify-content-between">Cras justo odio <Badge tag={Link} to={`/products/${product.id}/edit`} className="" color="warning" pill>edit</Badge></ListGroupItem>
+                            {/* <ListGroupItem className="justify-content-between">Cras justo odio <Badge tag={Link} to={`/products/${product.id}/edit`} className="" color="warning" pill>edit</Badge></ListGroupItem> */}
+
+                            {/* TRY ALTERNATING ON LISTGROUPITEM AND INPUT WHEN CLICKED, ADJUST INPUT PADDING */}
+
+                            {/*     position: relative;
+                        display: block;
+                        padding: .75rem 1.25rem;
+                        margin-bottom: -1px;
+                        background-color: #fff;
+                        border: 1px solid rgba(0,0,0,.125);
+                    } */}
+
+                            {/* <Input className="text-center" type="text" name="name" value={product.name}  id="name" placeholder="with a placeholder" disabled /> */}
+                            {/* <input className="editInput text-center" type="text" autoFocus name="name" value={product.name}/> */}
+                            <ProductInput  product={product} />
+                            
+                            
                             <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge pill>2</Badge></ListGroupItem>
                             <ListGroupItem className="justify-content-between">Morbi leo risus <Badge pill>1</Badge></ListGroupItem>
+    <Route path={`/products/:productId/edit`} render={routerProps => <ProductForm product={product}/>} />
                         </ListGroup>
-            <Route path={`/products/:productId/edit`} component={EditForm} />
                         
                         <Link to='/'> 
                         

@@ -14,6 +14,23 @@ class ProductForm extends Component {
     }
 
 
+    checkForProduct = () => {
+        // const { name, price, description, img_url } = this.props.product
+        const { product } = this.props
+        if (!!this.props.product) {
+            this.setState({
+                ...product
+                // name: name,
+                // price: price
+            })
+        }
+    }
+
+    componentDidMount() {
+        this.checkForProduct()
+    }
+
+
     handleOnSubmit = event => {
         event.preventDefault()
         this.props.addProduct(this.state)
