@@ -11,8 +11,9 @@ export default (state = [], action) => {
             const products = state.filter(product => product.id !== action.product.id);
             return products 
         case "UPDATE_PRODUCT":
-        debugger;
-            return [...state]
+        // const products = state.filter(product => product.id !== action.product.id)
+        // debugger;
+            return [state.filter(product => product.id !== action.product.id), action.product]
     
         default:
             return state;

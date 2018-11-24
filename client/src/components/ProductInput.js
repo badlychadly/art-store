@@ -1,13 +1,16 @@
 import React from 'react'
 
 
-const EditForm = (props) => {
+const ProductInput = (props) => {
 
     return (
         <React.Fragment>
-            <input className="editInput text-center" type="text" autoFocus name="name" value={props.product.name}/>
+            <form>
+            <input className="editInput text-center" type="text" autoFocus name={props.name} value={props.product.name}/>
+
+            </form>
         </React.Fragment>
     )
 }
 
-export default EditForm
+export default ProductInput

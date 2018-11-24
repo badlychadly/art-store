@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Col, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, 
+    ModalBody, ModalFooter } from 'reactstrap'
+import ProductInput from '../components/ProductInput'
 
-import { addProduct } from '../actions/products'
+import { addProduct, updateProduct } from '../actions/products'
 
 
 class ProductForm extends Component {
+    
     state = {
         name: "",
         price: "",
@@ -33,7 +36,7 @@ class ProductForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        this.props.addProduct(this.state)
+        !!this.props.product ? this.props.updateProduct(this.state) : this.props.addProduct(this.state)
     }
 
 
@@ -44,6 +47,8 @@ class ProductForm extends Component {
     }
 
     render() {
+        // debugger;
+        // console.log(this.state)
         return (
             <div>
 
@@ -97,4 +102,4 @@ class ProductForm extends Component {
     }
 }
 
-export default connect(null, { addProduct })(ProductForm);
+export default connect(null, { addProduct, updateProduct })(ProductForm);
