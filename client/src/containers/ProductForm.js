@@ -48,7 +48,7 @@ class ProductForm extends Component {
 
     render() {
         // debugger;
-        // console.log(this.state)
+        console.log(this.props)
         return (
             <div>
 

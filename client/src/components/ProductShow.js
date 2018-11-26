@@ -1,11 +1,12 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Redirect } from 'react-router-dom'
 import { Button, ListGroup, ListGroupItem, Badge, Container, Row, Col, Input  } from 'reactstrap';
 import ProductCard from './ProductCard'
 // import EditForm from './EditProductForm'
-import './EditInput.css'
-import ProductInput from './ProductInput'
+// import './EditInput.css'
+// import ProductInput from './ProductInput'
 import ProductForm from '../containers/ProductForm'
+import InfoTabs from './InfoTabs'
 
 
 const ProductShow = (props) => {
@@ -19,19 +20,25 @@ const ProductShow = (props) => {
         )
     }
 
-    // console.log(product)
+    // console.log(props)
     return props.products.length ? (
         <div>
             <h3 className="text-white">{product.name}</h3>
             {/* <Container className="m-0"> */}
                 <Row className="mx-0">
-                    <Col sm="9">
+                    <Col sm="8">
                         <ProductCard product={product} />
                         {/* <img src={product.img_url} alt={product.name}/> */}
                     </Col>
-                    <Col className="px-0 align-self-center" sm="3">
-                        <ListGroup className="">
-                            <ListGroupItem className="justify-content-between">Cras justo odio <Badge tag={Link} to={`/products/${product.id}/edit`} className="" color="warning" pill>edit</Badge></ListGroupItem>
+                    <Col sm="4">
+                    {/* <Col className="px-0 align-self-center" sm="4"> */}
+                    
+                    <InfoTabs product={product} />
+
+
+
+                        {/* <ListGroup className="">
+                            <ListGroupItem className="justify-content-between">Cras justo odio <Badge tag={Link} to={`/products/${product.id}/edit`} className="" color="warning" pill>edit</Badge></ListGroupItem> */}
 
                            
 
@@ -40,10 +47,11 @@ const ProductShow = (props) => {
                             {/* <ProductInput name={`name`}  product={product} /> */}
                             
                             
-                            <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge pill>2</Badge></ListGroupItem>
-                            <ListGroupItem className="justify-content-between">Morbi leo risus <Badge pill>1</Badge></ListGroupItem>
-    <Route path={`/products/:productId/edit`} render={routerProps => <ProductForm product={product} {...routerProps}/>} />
-                        </ListGroup>
+                            {/* <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge pill>2</Badge></ListGroupItem>
+                            <ListGroupItem className="justify-content-between">Morbi leo risus <Badge pill>1</Badge></ListGroupItem> */}
+                            
+                            <Route path={`/products/:productId/edit`} render={routerProps => props.logged_in ? <ProductForm product={product} {...routerProps}/>: <Redirect to={`/products/${product.id}`} />} />
+                        {/* </ListGroup> */}
                         
                         <Link to='/'> 
                         
