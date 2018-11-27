@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -19,6 +20,25 @@ export default class InfoTabs extends React.Component {
       });
     }
   }
+
+  viewButtons = () => {
+    // let view = false
+    // if (!this.props.logged_in || (this.props.location.pathname === `/products/${this.props.product.id}/edit`) ) {
+    //   view = true
+    // }
+    return (
+      <div>
+        <Button size="sm" hidden={!this.props.logged_in} color="warning" tag={Link} to={`/products/${this.props.product.id}/edit`} >edit Content</Button>
+        <Link to='/'> 
+        <Button size="sm" hidden={!this.props.logged_in} onClick={() => this.props.deleteProduct(this.props.product)} color="danger">danger</Button>
+                        
+           </Link>
+
+      </div>
+    )
+}
+
+
   render() {
     return (
       <div className="bg-white">
@@ -59,6 +79,7 @@ export default class InfoTabs extends React.Component {
             </Row>
           </TabPane>
         </TabContent>
+        {this.viewButtons()}
       </div>
     );
   }
