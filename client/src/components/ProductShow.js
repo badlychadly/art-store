@@ -13,10 +13,16 @@ const ProductShow = (props) => {
     
     const product = props.products.find(({ id }) => String(id) === props.match.params.productId)
 
-    const buttonView = () => {
+    const deleteButton = () => {
         return (
             <Button hidden={!props.logged_in} onClick={() => props.deleteProduct(product)} color="danger">danger</Button>
             
+        )
+    }
+
+    const editButton = () => {
+        return (
+            <Button hidden={!props.logged_in} color="warning" tag={Link} to={`/products/${product.id}/edit`} >edit Content</Button>
         )
     }
 
@@ -34,6 +40,7 @@ const ProductShow = (props) => {
                     {/* <Col className="px-0 align-self-center" sm="4"> */}
                     
                     <InfoTabs product={product} />
+                    {editButton()}
 
 
 
@@ -55,7 +62,7 @@ const ProductShow = (props) => {
                         
                         <Link to='/'> 
                         
-                            {buttonView()}
+                            {deleteButton()}
                         </Link>
                     </Col>
 

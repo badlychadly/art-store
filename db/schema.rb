@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 2018_11_05_210008) do
     t.string "price"
     t.string "description"
     t.string "img_url"
-    t.boolean "for_sale", default: true
+    t.boolean "original", default: true
+    t.boolean "prints", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

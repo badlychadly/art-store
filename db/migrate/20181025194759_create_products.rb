@@ -5,7 +5,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :price
       t.string :description
       t.string :img_url
-      t.boolean :for_sale, :default => true
+      t.boolean :original, :default => true
+      t.boolean :prints, :default => true
 
       t.timestamps
     end

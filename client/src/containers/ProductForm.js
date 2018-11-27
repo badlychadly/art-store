@@ -13,7 +13,8 @@ class ProductForm extends Component {
         name: "",
         price: "",
         description: "",
-        img_url: ""
+        img_url: "",
+        prints: true
     }
 
 
@@ -41,14 +42,16 @@ class ProductForm extends Component {
 
 
     handleOnChange = event => {
+        const target = event.target
+        const value = target.type === 'checkbox' ? target.checked : target.value
         this.setState({
-            [event.target.name]: event.target.value
+            [target.name]: value
         })
     }
 
     render() {
         // debugger;
-        console.log(this.props)
+        // console.log(this.state)
         return (
             <div>
 
@@ -89,6 +92,12 @@ class ProductForm extends Component {
                         </FormText>
                     </Col>
                     </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input name="prints" type="checkbox" checked={this.state.prints} onChange={this.handleOnChange} />{' '}
+                            Check me out
+                        </Label>
+                        </FormGroup>
                     
                     <FormGroup check row>
                     <Col sm={{ size: 10, offset: 2 }}>
