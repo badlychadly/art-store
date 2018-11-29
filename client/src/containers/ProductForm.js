@@ -17,7 +17,7 @@ class ProductForm extends Component {
                 price: "",
                 description: "",
                 img_url: "",
-                prints: true
+                prints: false
             },
             modal: true
         }
@@ -116,7 +116,7 @@ class ProductForm extends Component {
                             <FormGroup check>
                                 <Label check className="text-dark">
                                     <Input name="prints" type="checkbox" checked={this.state.productInfo.prints} onChange={this.handleOnChange} />{' '}
-                                    Check me out
+                                    Prints Available?
                                 </Label>
                                 </FormGroup>
                     
@@ -128,7 +128,7 @@ class ProductForm extends Component {
                         <Button color="primary">Submit</Button>
                     </Col>
                     </FormGroup>                           
-                     <Button color="secondary" tag={Link} to="/">Cancel</Button>
+                     <Button color="secondary" onClick={() => this.props.history.goBack()}>Cancel</Button>
                         </ModalFooter>
                     </Form>
                 </Modal>
