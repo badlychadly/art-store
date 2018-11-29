@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Col, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, 
     ModalBody, ModalFooter } from 'reactstrap'
-import ProductInput from '../components/ProductInput'
-
+import '../components/CustomModal.css'
 import { addProduct, updateProduct } from '../actions/products'
 
 
 class ProductForm extends Component {
-    
-    state = {
-        name: "",
-        price: "",
-        description: "",
-        img_url: "",
-        prints: true
+    constructor(props) {
+        super(props)
+        // debugger;
+        this.state = {
+            productInfo: {
+                name: "",
+                price: "",
+                description: "",
+                img_url: "",
+                prints: true
+            },
+            modal: true
+        }
     }
+    
+    // state = {
+    //     productInfo: {name: "",
+    //     price: "",
+    //     description: "",
+    //     img_url: "",
+    //     prints: true},
+    //     modal: true
+    // }
 
 
     checkForProduct = () => {
@@ -23,7 +38,7 @@ class ProductForm extends Component {
         const { product } = this.props
         if (!!this.props.product) {
             this.setState({
-                ...product
+                productInfo: product
                 // name: name,
                 // price: price
             })
@@ -32,79 +47,92 @@ class ProductForm extends Component {
 
     componentDidMount() {
         this.checkForProduct()
+        // debugger;
     }
 
 
     handleOnSubmit = event => {
         event.preventDefault()
-        !!this.props.product ? this.props.updateProduct(this.state) : this.props.addProduct(this.state)
+        !!this.props.product ? this.props.updateProduct(this.state.productInfo) : this.props.addProduct(this.state.productInfo)
+        this.props.history.goBack()
     }
 
 
     handleOnChange = event => {
         const target = event.target
+        const productInfo = this.state.productInfo
         const value = target.type === 'checkbox' ? target.checked : target.value
+        productInfo[target.name] = value
         this.setState({
-            [target.name]: value
+            productInfo: productInfo
         })
     }
 
     render() {
         // debugger;
-        // console.log(this.state)
+        // console.log(this)
         return (
             <div>
-
-                 <Form onSubmit={this.handleOnSubmit} className="text-white">
-                    <FormGroup row>
-                        <Label for="name" sm={2}>Name</Label>
-                        <Col sm={10}>
-                            <Input type="text" name="name" onChange={this.handleOnChange} value={this.state.name} id="name" placeholder="with a placeholder" />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="price" sm={2}>Price</Label>
-                        <Col sm={10}>
-                            <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.price} id="price" placeholder="price placeholder" />
-                        </Col>
-                    </FormGroup>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <Form onSubmit={this.handleOnSubmit} className="text-white">
+                        <ModalBody>
+                            <FormGroup row>
+                                <Label for="name" sm={2} className="text-dark">Name</Label>
+                                <Col sm={10}>
+                                    <Input type="text" name="name" onChange={this.handleOnChange} value={this.state.productInfo.name} id="name" placeholder="with a placeholder" />
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="price" sm={2} className="text-dark">Price</Label>
+                                <Col sm={10}>
+                                    <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.productInfo.price} id="price" placeholder="price placeholder" />
+                                </Col>
+                            </FormGroup>
+                            
+                            
+                            <FormGroup row>
+                            <Label for="description" sm={2} className="text-dark">Description</Label>
+                            <Col sm={10}>
+                                <Input type="textarea" name="description" onChange={this.handleOnChange} value={this.state.productInfo.description} id="description" />
+                            </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                            <Label for="img_url" sm={2} className="text-dark">Img_url</Label>
+                            <Col sm={10}>
+                                <Input type="text" name="img_url" onChange={this.handleOnChange} value={this.state.productInfo.img_url} id="price" placeholder="price placeholder" />
+                            </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                            <Label for="exampleFile" sm={2} className="text-dark">File</Label>
+                            <Col sm={10}>
+                                <Input type="file" name="file" id="exampleFile" />
+                                <FormText color="muted">
+                                This is some placeholder block-level help text for the above input.
+                                It's a bit lighter and easily wraps to a new line.
+                                </FormText>
+                            </Col>
+                            </FormGroup>
+                            <FormGroup check>
+                                <Label check className="text-dark">
+                                    <Input name="prints" type="checkbox" checked={this.state.productInfo.prints} onChange={this.handleOnChange} />{' '}
+                                    Check me out
+                                </Label>
+                                </FormGroup>
                     
                     
-                    <FormGroup row>
-                    <Label for="description" sm={2}>Description</Label>
-                    <Col sm={10}>
-                        <Input type="textarea" name="description" onChange={this.handleOnChange} value={this.state.description} id="description" />
-                    </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                    <Label for="img_url" sm={2}>Img_url</Label>
-                    <Col sm={10}>
-                        <Input type="text" name="img_url" onChange={this.handleOnChange} value={this.state.img_url} id="price" placeholder="price placeholder" />
-                    </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                    <Label for="exampleFile" sm={2}>File</Label>
-                    <Col sm={10}>
-                        <Input type="file" name="file" id="exampleFile" />
-                        <FormText color="muted">
-                        This is some placeholder block-level help text for the above input.
-                        It's a bit lighter and easily wraps to a new line.
-                        </FormText>
-                    </Col>
-                    </FormGroup>
-                    <FormGroup check>
-                        <Label check>
-                            <Input name="prints" type="checkbox" checked={this.state.prints} onChange={this.handleOnChange} />{' '}
-                            Check me out
-                        </Label>
-                        </FormGroup>
-                    
-                    <FormGroup check row>
+                        </ModalBody>
+                        <ModalFooter>
+                        <FormGroup check row>
                     <Col sm={{ size: 10, offset: 2 }}>
                         <Button color="primary">Submit</Button>
                     </Col>
-                    </FormGroup>
-                </Form>
+                    </FormGroup>                           
+                     <Button color="secondary" tag={Link} to="/">Cancel</Button>
+                        </ModalFooter>
+                    </Form>
+                </Modal>
+
 
             </div>
         )

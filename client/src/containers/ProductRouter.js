@@ -7,6 +7,7 @@ import { logOutUser } from '../actions/session'
 import ProductsContainer from './ProductsContainer'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
+import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
 
 
@@ -25,14 +26,18 @@ class ProductRouter extends Component {
 
 
     render() {
+        // this.props.history.block("can't go here")
         // debugger;
         // console.log(this.props)
         return (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} />
                 
-                <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />            
+                <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   
+
+
                 <Switch>
+                    <Route exact path="/products/new" render={routerProps => this.props.logged_in ? <ProductForm {...routerProps} /> : <Redirect to="/" />} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
                     <Route path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
 

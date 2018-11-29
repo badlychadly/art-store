@@ -74,7 +74,7 @@ export default class InfoTabs extends React.Component {
           <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <h4>Tab 1 Contents</h4>
+                <h5>{!!this.props.product.prints ? "available" : "unavailable"}</h5>
               </Col>
             </Row>
           </TabPane>

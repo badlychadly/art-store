@@ -1,0 +1,6 @@
+.modal-dialog {
+    max-width: 90%;
+  }
+  .modal-content {
+    width: 100%; /* = 100% of the .modal-dialog block */
+  }

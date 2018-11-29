@@ -62,34 +62,34 @@ handleInvalid = () => {
         {/* <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button> */}
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                <Form onSubmit={this.handleOnSubmit} >
-          <ModalBody>
+          <Form onSubmit={this.handleOnSubmit} >
+            <ModalBody>
 
 
-          <FormGroup>
-          <Label for="email">Email</Label>
-          <Input invalid={this.props.failedLogin} 
-          name="email" onChange={this.handleOnChange} 
-          value={this.state.credentials.email} 
-          />
-          
-          <Label for="password">Password</Label>
-          <Input 
-          invalid={this.props.failedLogin} 
-          type="password" name="password" 
-          placeholder="password" onChange={this.handleOnChange} 
-          value={this.state.credentials.password} 
-          />
-          <FormFeedback className="text-center" invalid={this.props.failedLogin.toString()}>Invalid Email or Password</FormFeedback>
-          <FormText>Please Sign In</FormText>
-          </FormGroup>
+              <FormGroup>
+                <Label for="email">Email</Label>
+                <Input invalid={this.props.failedLogin} 
+                name="email" onChange={this.handleOnChange} 
+                value={this.state.credentials.email} 
+                />
+                
+                <Label for="password">Password</Label>
+                <Input 
+                invalid={this.props.failedLogin} 
+                type="password" name="password" 
+                placeholder="password" onChange={this.handleOnChange} 
+                value={this.state.credentials.password} 
+                />
+                <FormFeedback className="text-center" invalid={this.props.failedLogin.toString()}>Invalid Email or Password</FormFeedback>
+                <FormText>Please Sign In</FormText>
+              </FormGroup>
 
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" name="submit">Login</Button>{' '}
-            <Button color="secondary" tag={Link} to="/">Cancel</Button>
-          </ModalFooter>
-                </Form>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" name="submit">Login</Button>{' '}
+              <Button color="secondary" tag={Link} to="/">Cancel</Button>
+            </ModalFooter>
+          </Form>
         </Modal>
       </div>
     );

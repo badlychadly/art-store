@@ -40,7 +40,9 @@ const ProductShow = (props) => {
                     <Col sm="4">
                     {/* <Col className="px-0 align-self-center" sm="4"> */}
 
-                    <Route exact path={`/products/:productId`} render={routerProps => <InfoTabs product={product} logged_in={props.logged_in} deleteProduct={props.deleteProduct} {...routerProps} /> } />
+                    {/* <Route exact path={`/products/:productId`} render={routerProps => <InfoTabs product={product} logged_in={props.logged_in} deleteProduct={props.deleteProduct} {...routerProps} /> } /> */}
+
+                    <InfoTabs product={product} logged_in={props.logged_in} deleteProduct={props.deleteProduct} />
                     
                     {/* <InfoTabs product={product} logged_in={props.logged_in} location={props.location} /> */}
                     {/* {editButton()} */}
