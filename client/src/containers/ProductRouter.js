@@ -9,6 +9,7 @@ import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
+import PrivateRoute from '../components/PrivateRoute'
 
 
 import '../Products.css'
@@ -37,7 +38,8 @@ class ProductRouter extends Component {
 
 
                 <Switch>
-                    <Route exact path="/products/new" render={routerProps => this.props.logged_in ? <ProductForm {...routerProps} /> : <Redirect to="/" />} />
+                    {/* <Route exact path="/products/new" render={routerProps => this.props.logged_in ? <ProductForm {...routerProps} /> : <Redirect to="/" />} /> */}
+                    <PrivateRoute path="/products/new" logged_in={this.props.logged_in} component={ProductForm} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
                     <Route path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
 
