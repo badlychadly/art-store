@@ -1,4 +1,5 @@
 export default {
     hasToken: !!sessionStorage.jwt,
-    failedLogin: false
+    failedLogin: false,
+    routeError: false
 }

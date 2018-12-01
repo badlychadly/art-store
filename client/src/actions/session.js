@@ -28,3 +28,11 @@ export function loginSuccess() {
     sessionStorage.removeItem('jwt');
     return {type: "LOG_OUT"}
   }
+
+  export function trackAttempt() {
+    return {type: "ROUTE_ERROR"}
+  }
+
+  export function unTrack() {
+    return {type: "RESOLVE_ERROR"}
+  }

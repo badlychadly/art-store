@@ -10,6 +10,10 @@ export default function sessionReducer(state = initialState, action) {
         return {...state, failedLogin: true}
       case "LOG_OUT":
         return {...state, hasToken: !!sessionStorage.jwt}
+      case "ROUTE_ERROR":
+      return {...state, routeError: true}
+      case "RESOLVE_ERROR":
+        return {...state, routeError: false}
       default: 
         return state;
     }

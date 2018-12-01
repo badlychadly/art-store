@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import { getProducts, deleteProduct } from '../actions/products'
-import { logOutUser } from '../actions/session'
+import { logOutUser, trackAttempt, unTrack } from '../actions/session'
 import ProductsContainer from './ProductsContainer'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
@@ -38,10 +38,9 @@ class ProductRouter extends Component {
 
 
                 <Switch>
-                    {/* <Route exact path="/products/new" render={routerProps => this.props.logged_in ? <ProductForm {...routerProps} /> : <Redirect to="/" />} /> */}
-                    <PrivateRoute path="/products/new" logged_in={this.props.logged_in} component={ProductForm} />
+                    <PrivateRoute path="/products/new" trackAttempt={this.props.trackAttempt} logged_in={this.props.logged_in} component={ProductForm} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
-                    <Route path="/" render={routerProps => <ProductsContainer products={this.props.products} {...routerProps} />} />
+                    <Route path="/" render={routerProps => <ProductsContainer attemptedAccess={this.props.attemptedAccess} unTrack={this.props.unTrack} trackAttempt={this.props.trackAttempt} products={this.props.products} {...routerProps} />} />
 
                 </Switch>
             </div>
@@ -52,8 +51,9 @@ class ProductRouter extends Component {
 const mapStateToProps = (state, ownProps) => {
     return ({
         products: state.products,
-        logged_in: state.session.hasToken
+        logged_in: state.session.hasToken,
+        attemptedAccess: state.session.routeError
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, trackAttempt, unTrack })(ProductRouter);
