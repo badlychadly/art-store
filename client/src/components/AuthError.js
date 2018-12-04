@@ -8,25 +8,31 @@ class AuthError extends Component {
     //   debugger;
   
       state = {
-        visible: true
+        visible: false
       };
-    //   this.onDismiss = this.onDismiss.bind(this);
     //   debugger;
     //   this.props.unTrack = props.unTrack.bind(this)
     // }
-// WHY IS unTrack not available??
+
+      componentDidMount() {
+
+        if (this.props.history.location.state && this.props.history.location.state.error) {
+            this.props.trackAttempt()
+            this.props.history.replace({pathname: this.props.location.pathname, state: {}})
+            this.setState({visible: true})
+        }
+      }
+
   
     onDismiss = () => {
-        // debugger;
-        this.setState({ visible: false });
         this.props.unTrack()
+        this.setState({ visible: false });
     }
   
     render() {
-        // debugger;
       return (
-        <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-          I am an alert and I can be dismissed!
+        <Alert className="bg-danger border-0" isOpen={this.state.visible} toggle={this.onDismiss}>
+          You do not have Access to this page
         </Alert>
       );
     }

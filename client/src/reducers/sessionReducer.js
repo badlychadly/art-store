@@ -13,6 +13,7 @@ export default function sessionReducer(state = initialState, action) {
       case "ROUTE_ERROR":
       return {...state, routeError: true}
       case "RESOLVE_ERROR":
+      // debugger;
         return {...state, routeError: false}
       default: 
         return state;

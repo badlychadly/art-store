@@ -25,20 +25,21 @@ const ProductsContainer = (props) => {
     ))
       }
 
-      const showAuthError = () => {
-          if (!!props.location.state && props.location.state.error) {
-            //   debugger;
-              props.trackAttempt()
-          }
+    //   const showAuthError = () => {
+    //       if (!!props.location.state && props.location.state.error) {
+    //           debugger;
+    //         // props.unTrack()
+    //           props.trackAttempt()
+    //       }
           
-          return !props.attemptedAccess || <AuthError location={props.location} unTrack={props.unTrack} />
-      }
+    //       return !props.attemptedAccess || <AuthError location={props.location} unTrack={props.unTrack} />
+    //   }
 
         return (
             <div>
                 {/* {!props.attemptedAccess || <AuthError location={props.location} />} */}
-                {showAuthError()}
-                {/* <AuthError location={props.location} /> */}
+                {/* {showAuthError()} */}
+                <AuthError history={props.history} location={props.location} unTrack={props.unTrack} trackAttempt={props.trackAttempt} attemptedAccess={props.attemptedAccess} />
                 <CardColumns className="ProductsContainer">
                 
                 {/* {!!props.location.state.error ? <AuthError/> : null} */}

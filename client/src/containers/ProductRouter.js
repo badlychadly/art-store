@@ -21,7 +21,8 @@ class ProductRouter extends Component {
 
 
     componentDidMount() {
-        this.props.getProducts()
+        // debugger;
+        !!this.props.products.length || this.props.getProducts()
     }
        
 

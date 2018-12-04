@@ -29,7 +29,7 @@ export default function PrivateRoute({ component: Component, logged_in, trackAtt
               <Redirect to={{
                   pathname: '/',
                   state: {
-                      error: true
+                    from: props.location, error: true
                   }
               }} />
             //   deniedRedirect(props)
