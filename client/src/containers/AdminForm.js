@@ -13,7 +13,7 @@ import { logInUser } from '../actions/session'
 
 
 
-class AdminForm extends React.Component {
+class AdminForm extends Component {
   constructor(props) {
     super(props);
     this.state = {

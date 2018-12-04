@@ -13,7 +13,6 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
   import { NavLink as RouterNavLink} from 'react-router-dom'
-  // import { logOutUser } from '../actions/session'
   
   
 export default class NavbarMain extends Component {
@@ -39,15 +38,16 @@ export default class NavbarMain extends Component {
   render() {
     return (
       <div>
-        {/* navbar-dark bg-dark */}
         <Navbar className="NavbarMain navbar-dark" light expand="md">
           <NavbarBrand tag={RouterNavLink} to="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+            { this.props.logged_in &&
               <NavItem>
                 <NavLink tag={RouterNavLink} to="/products/new">Add Product</NavLink>
               </NavItem>
+            }
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>

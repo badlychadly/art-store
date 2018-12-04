@@ -33,7 +33,7 @@ class ProductRouter extends Component {
         // console.log(this.props)
         return (
             <div>
-            <NavbarMain logOutUser={this.props.logOutUser} />
+            <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
                 
                 <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   
 
