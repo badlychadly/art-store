@@ -10,9 +10,7 @@ class AuthError extends Component {
       state = {
         visible: false
       };
-    //   debugger;
-    //   this.props.unTrack = props.unTrack.bind(this)
-    // }
+
 
       componentDidMount() {
 

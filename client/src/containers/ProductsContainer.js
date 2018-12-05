@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { CardColumns } from 'reactstrap';
 
 import ProductCard from '../components/ProductCard'
-import AuthError from '../components/AuthError'
+import AuthError from '../components//messages/AuthError'
+import WelcomeMessage from '../components/messages/WelcomeMessage'
 
 import '../Products.css'
 
@@ -25,20 +26,15 @@ const ProductsContainer = (props) => {
     ))
       }
 
-    //   const showAuthError = () => {
-    //       if (!!props.location.state && props.location.state.error) {
-    //           debugger;
-    //         // props.unTrack()
-    //           props.trackAttempt()
-    //       }
-          
-    //       return !props.attemptedAccess || <AuthError location={props.location} unTrack={props.unTrack} />
-    //   }
+
 
         return (
             <div>
                 {/* {!props.attemptedAccess || <AuthError location={props.location} />} */}
                 {/* {showAuthError()} */}
+                { props.sendWelcome &&
+                    <WelcomeMessage history={props.history} sendWelcome={props.sendWelcome} location={props.location} />
+                }
                 <AuthError history={props.history} location={props.location} unTrack={props.unTrack} trackAttempt={props.trackAttempt} attemptedAccess={props.attemptedAccess} />
                 <CardColumns className="ProductsContainer">
                 
@@ -49,9 +45,6 @@ const ProductsContainer = (props) => {
                 </CardColumns>
 
             </div>
-            // <div className="ProductsContainer">
-            //     {listProducts(props.products)} 
-            // </div>
         )
 }
 

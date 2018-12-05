@@ -9,7 +9,7 @@ import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
-import PrivateRoute from '../components/PrivateRoute'
+import { PrivateRoute, AdminLoginRoute } from '../components/CustomRoutes'
 
 
 import '../Products.css'
@@ -18,6 +18,10 @@ import '../Products.css'
 
 
 class ProductRouter extends Component {
+
+    state = {
+        welcomeAdmin: false
+    }
 
 
     componentDidMount() {
@@ -28,20 +32,21 @@ class ProductRouter extends Component {
 
 
     render() {
-        // this.props.history.block("can't go here")
         // debugger;
-        // console.log(this.props)
         return (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
+            
                 
-                <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   
+                {/* <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   */}
+
+                <AdminLoginRoute path="/admin/login" logged_in={this.props.logged_in} component={AdminForm} /> 
 
 
                 <Switch>
                     <PrivateRoute path="/products/new" trackAttempt={this.props.trackAttempt} logged_in={this.props.logged_in} component={ProductForm} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
-                    <Route path="/" render={routerProps => <ProductsContainer attemptedAccess={this.props.attemptedAccess} unTrack={this.props.unTrack} trackAttempt={this.props.trackAttempt} products={this.props.products} {...routerProps} />} />
+                    <Route path="/" render={routerProps => <ProductsContainer sendWelcome={this.props.sendWelcome} attemptedAccess={this.props.attemptedAccess} unTrack={this.props.unTrack} trackAttempt={this.props.trackAttempt} products={this.props.products} {...routerProps} />} />
 
                 </Switch>
             </div>
@@ -53,7 +58,8 @@ const mapStateToProps = (state, ownProps) => {
     return ({
         products: state.products,
         logged_in: state.session.hasToken,
-        attemptedAccess: state.session.routeError
+        attemptedAccess: state.session.routeError,
+        sendWelcome: state.session.sendWelcome
     })
 }
 
