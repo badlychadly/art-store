@@ -8,7 +8,6 @@ export function loginSuccess() {
   export function logInUser(credentials, history) {  
     return function(dispatch) {
       return sessionApi.login(credentials).then(response => {
-        // debugger;
         if (!!response.jwt) {
           sessionStorage.setItem('jwt', response.jwt);
           dispatch(loginSuccess());
@@ -35,4 +34,8 @@ export function loginSuccess() {
 
   export function unTrack() {
     return {type: "RESOLVE_ERROR"}
+  }
+
+  export function resetWelcome() {
+    return {type: 'RESET_WELCOME'}
   }

@@ -1,36 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Alert } from 'reactstrap';
 
-// FIGURE OUT HOW TO SET TIMER
 
-class WelcomeMessage extends React.Component {
-  constructor(props) {
-    super(props);
+class WelcomeMessage extends Component {
 
-    this.state = {
-      visible: true
+
+    state = {
+      visible: true,
+      calledReset: false
     };
 
-    this.onDismiss = this.onDismiss.bind(this);
-  }
 
-  onDismiss() {
+
+  onDismiss = () => {
+    //   debugger;
+    if (this.timerHandle) {                  
+        clearTimeout(this.timerHandle);      
+        this.timerHandle = 0;                
+    } 
     this.setState({ visible: false });
   }
+
   
-//   componentDidMount() {
-    //   debugger
-    // if (this.props.location.state && ) {
-        
-    // }
-    // this.props.history.replace({pathname: this.props.location.pathname, state: {}})
+  
+  componentDidMount() {
+
+    this.timerHandle = setTimeout(() => {
+        this.setState({ visible: false, calledReset: true });    
+        // debugger;
+        this.props.resetWelcome()
+        this.timerHandle = 0;              
+      }, 2000); 
+  }
+
+  componentWillUnmount() {
+    if (this.timerHandle) {  
+        // debugger;                
+        clearTimeout(this.timerHandle);      
+        this.timerHandle = 0;                
+    }        
+    this.state.calledReset || this.props.resetWelcome()                                  
+  }; 
+      
 //   }
 
   render() {
     //   debugger;
     return (
-      <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
-        I am an alert and I can be dismissed!
+      <Alert color="success" isOpen={this.state.visible} toggle={this.onDismiss}>
+        Welcome Admin!
       </Alert>
     );
   }

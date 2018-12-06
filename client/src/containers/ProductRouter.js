@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import { getProducts, deleteProduct } from '../actions/products'
-import { logOutUser, trackAttempt, unTrack } from '../actions/session'
+import { logOutUser, trackAttempt, unTrack, resetWelcome } from '../actions/session'
 import ProductsContainer from './ProductsContainer'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
@@ -46,7 +46,7 @@ class ProductRouter extends Component {
                 <Switch>
                     <PrivateRoute path="/products/new" trackAttempt={this.props.trackAttempt} logged_in={this.props.logged_in} component={ProductForm} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
-                    <Route path="/" render={routerProps => <ProductsContainer sendWelcome={this.props.sendWelcome} attemptedAccess={this.props.attemptedAccess} unTrack={this.props.unTrack} trackAttempt={this.props.trackAttempt} products={this.props.products} {...routerProps} />} />
+                    <Route path="/" render={routerProps => <ProductsContainer resetWelcome={this.props.resetWelcome} sendWelcome={this.props.sendWelcome} attemptedAccess={this.props.attemptedAccess} unTrack={this.props.unTrack} trackAttempt={this.props.trackAttempt} products={this.props.products} {...routerProps} />} />
 
                 </Switch>
             </div>
@@ -63,4 +63,4 @@ const mapStateToProps = (state, ownProps) => {
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, trackAttempt, unTrack })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, trackAttempt, unTrack, resetWelcome })(ProductRouter);

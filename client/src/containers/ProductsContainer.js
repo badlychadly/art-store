@@ -27,13 +27,13 @@ const ProductsContainer = (props) => {
       }
 
 
-
+      
         return (
             <div>
                 {/* {!props.attemptedAccess || <AuthError location={props.location} />} */}
                 {/* {showAuthError()} */}
                 { props.sendWelcome &&
-                    <WelcomeMessage history={props.history} sendWelcome={props.sendWelcome} location={props.location} />
+                    <WelcomeMessage history={props.history} resetWelcome={props.resetWelcome} sendWelcome={props.sendWelcome} location={props.location} />
                 }
                 <AuthError history={props.history} location={props.location} unTrack={props.unTrack} trackAttempt={props.trackAttempt} attemptedAccess={props.attemptedAccess} />
                 <CardColumns className="ProductsContainer">
