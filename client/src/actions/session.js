@@ -28,14 +28,7 @@ export function loginSuccess() {
     return {type: "LOG_OUT"}
   }
 
-  export function trackAttempt() {
-    return {type: "ROUTE_ERROR"}
-  }
 
-  export function unTrack() {
-    return {type: "RESOLVE_ERROR"}
-  }
-
-  export function resetWelcome() {
-    return {type: 'RESET_WELCOME'}
+  export function resetMessage() {
+    return {type: 'RESET_MESSAGE'}
   }

@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom'
 // ADD CUSTOM ROUTE FOR SUCCESSFUL LOGIN
 
 
-export function PrivateRoute({ component: Component, logged_in, trackAttempt, ...rest }) {
+export function PrivateRoute({ component: Component, logged_in, ...rest }) {
     return (
       <Route
         {...rest}
@@ -31,10 +31,7 @@ export function PrivateRoute({ component: Component, logged_in, trackAttempt, ..
       render={routerProps => 
         logged_in ? (
         <Redirect to={{
-          pathname: '/',
-          state: {
-            from: routerProps.location, loginSuccess: true
-          }
+          pathname: '/'
         }}/> 
       ) : (
       <Component logged_in={logged_in} {...routerProps} />)} /> 

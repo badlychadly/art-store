@@ -43,11 +43,11 @@ export default class NavbarMain extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-            {/* { this.props.logged_in && */}
+            { this.props.logged_in &&
               <NavItem>
                 <NavLink tag={RouterNavLink} to="/products/new">Add Product</NavLink>
               </NavItem>
-            {/* } */}
+            }
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>

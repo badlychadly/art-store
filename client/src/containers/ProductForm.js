@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { Col, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, 
     ModalBody, ModalFooter } from 'reactstrap'
 import '../components/CustomModal.css'

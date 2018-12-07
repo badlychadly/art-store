@@ -24,28 +24,24 @@ class WelcomeMessage extends Component {
   
   
   componentDidMount() {
-
     this.timerHandle = setTimeout(() => {
         this.setState({ visible: false, calledReset: true });    
-        // debugger;
-        this.props.resetWelcome()
+        this.props.resetMessage()
         this.timerHandle = 0;              
-      }, 2000); 
+    }, 2000); 
   }
 
   componentWillUnmount() {
     if (this.timerHandle) {  
-        // debugger;                
         clearTimeout(this.timerHandle);      
         this.timerHandle = 0;                
     }        
-    this.state.calledReset || this.props.resetWelcome()                                  
+    this.state.calledReset || this.props.resetMessage()                                  
   }; 
       
-//   }
+
 
   render() {
-    //   debugger;
     return (
       <Alert color="success" isOpen={this.state.visible} toggle={this.onDismiss}>
         Welcome Admin!

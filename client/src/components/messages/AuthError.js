@@ -3,29 +3,33 @@ import { Alert } from 'reactstrap';
 
 
 class AuthError extends Component {
-    // constructor(props) {
-    //   super(props);
-    //   debugger;
   
       state = {
-        visible: false
+        visible: true
       };
 
 
       componentDidMount() {
-
-        if (this.props.history.location.state && this.props.history.location.state.error) {
-            this.props.trackAttempt()
-            this.props.history.replace({pathname: this.props.location.pathname, state: {}})
-            this.setState({visible: true})
-        }
+          this.timerHandle = setTimeout(() => {
+            this.setState({ visible: false }); 
+            this.props.history.replace({pathname: this.props.location.pathname, state: {}})   
+            this.timerHandle = 0;              
+        }, 2000);
       }
 
   
     onDismiss = () => {
-        this.props.unTrack()
         this.setState({ visible: false });
     }
+
+    
+    componentWillUnmount() {
+      // debugger;
+      if (this.timerHandle) {  
+          clearTimeout(this.timerHandle);      
+          this.timerHandle = 0;                
+      }                                          
+    };
   
     render() {
       return (

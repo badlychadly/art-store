@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import { getProducts, deleteProduct } from '../actions/products'
-import { logOutUser, trackAttempt, unTrack, resetWelcome } from '../actions/session'
-import ProductsContainer from './ProductsContainer'
+import { logOutUser, resetMessage } from '../actions/session'
+import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
@@ -19,20 +19,15 @@ import '../Products.css'
 
 class ProductRouter extends Component {
 
-    state = {
-        welcomeAdmin: false
-    }
 
 
     componentDidMount() {
-        // debugger;
         !!this.props.products.length || this.props.getProducts()
     }
        
 
 
     render() {
-        // debugger;
         return (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
@@ -44,9 +39,9 @@ class ProductRouter extends Component {
 
 
                 <Switch>
-                    <PrivateRoute path="/products/new" trackAttempt={this.props.trackAttempt} logged_in={this.props.logged_in} component={ProductForm} />
+                    <PrivateRoute path="/products/new" logged_in={this.props.logged_in} component={ProductForm} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
-                    <Route path="/" render={routerProps => <ProductsContainer resetWelcome={this.props.resetWelcome} sendWelcome={this.props.sendWelcome} attemptedAccess={this.props.attemptedAccess} unTrack={this.props.unTrack} trackAttempt={this.props.trackAttempt} products={this.props.products} {...routerProps} />} />
+                    <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
                 </Switch>
             </div>
@@ -58,9 +53,8 @@ const mapStateToProps = (state, ownProps) => {
     return ({
         products: state.products,
         logged_in: state.session.hasToken,
-        attemptedAccess: state.session.routeError,
-        sendWelcome: state.session.sendWelcome
+        sendMessage: state.session.sendMessage
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, trackAttempt, unTrack, resetWelcome })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage })(ProductRouter);

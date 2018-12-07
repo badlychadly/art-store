@@ -9,12 +9,8 @@ import WelcomeMessage from '../components/messages/WelcomeMessage'
 import '../Products.css'
 
 
-const ProductsContainer = (props) => {
+const ListProducts = (props) => {
     
-    
-
-// debugger;
-// console.log(props.location.state)
 
 
       const listProducts = products => {
@@ -27,26 +23,23 @@ const ProductsContainer = (props) => {
       }
 
 
-      
+    //   debugger;
         return (
             <div>
-                {/* {!props.attemptedAccess || <AuthError location={props.location} />} */}
-                {/* {showAuthError()} */}
-                { props.sendWelcome &&
-                    <WelcomeMessage history={props.history} resetWelcome={props.resetWelcome} sendWelcome={props.sendWelcome} location={props.location} />
+                { props.sendMessage &&
+                    <WelcomeMessage history={props.history} resetMessage={props.resetMessage} sendMessage={props.sendMessage} location={props.location} />
                 }
+                { (!!props.location.state && props.location.state.error) &&
                 <AuthError history={props.history} location={props.location} unTrack={props.unTrack} trackAttempt={props.trackAttempt} attemptedAccess={props.attemptedAccess} />
-                <CardColumns className="ProductsContainer">
-                
-                {/* {!!props.location.state.error ? <AuthError/> : null} */}
+            }
 
+                <CardColumns className="ListProducts">
                     {listProducts(props.products)}
-            
                 </CardColumns>
 
             </div>
         )
 }
 
-export default ProductsContainer
+export default ListProducts
 
