@@ -6,6 +6,7 @@ import { getProducts, deleteProduct } from '../actions/products'
 import { logOutUser, resetMessage } from '../actions/session'
 import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
+import ProductShw from '../components/ProductShw'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
@@ -22,6 +23,7 @@ class ProductRouter extends Component {
 
 
     componentDidMount() {
+        // debugger;
         !!this.props.products.length || this.props.getProducts()
     }
        
