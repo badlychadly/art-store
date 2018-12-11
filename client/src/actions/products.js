@@ -43,3 +43,7 @@ export const deleteProduct = product => {
         )
     }
 }
+
+export const resetNewProduct = () => {
+    return {type: "RESET_NEW_PRODUCT"}
+}

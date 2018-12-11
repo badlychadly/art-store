@@ -20,6 +20,8 @@ export default (state = {
             products = [...state.products.filter(product => product.id !== action.product.id), action.product]
             
             return {...state, products: products}
+        case "RESET_NEW_PRODUCT":
+            return {...state, newProduct: {}}
     
         default:
             return state;

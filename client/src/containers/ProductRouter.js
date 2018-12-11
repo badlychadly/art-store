@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import { getProducts, deleteProduct } from '../actions/products'
+import { getProducts, deleteProduct, resetNewProduct } from '../actions/products'
 import { logOutUser, resetMessage } from '../actions/session'
 import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
@@ -30,7 +30,8 @@ class ProductRouter extends Component {
 
 
     render() {
-        return (
+        // debugger;
+        return this.props.products.length ? (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
             
@@ -42,12 +43,12 @@ class ProductRouter extends Component {
 
                 <Switch>
                     <PrivateRoute path="/products/new" newProduct={this.props.newProduct} logged_in={this.props.logged_in} component={ProductForm} />
-                    <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
+                    <Route path={`/products/:productId`} render={routerProps => (<ProductShw products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
                     <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
                 </Switch>
             </div>
-        )
+        ) : <h3 className="text-white">Loading content...</h3>
     }
 }
 
@@ -60,4 +61,4 @@ const mapStateToProps = (state, ownProps) => {
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct })(ProductRouter);

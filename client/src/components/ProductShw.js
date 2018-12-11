@@ -17,6 +17,10 @@ class ProductShw extends Component {
         return String(id) === this.props.match.params.productId
     })
 
+    componentDidMount() {
+        !!this.props.newProduct.id && this.props.resetNewProduct() 
+    }
+
      viewButtons = () => {
         return ( 
           <div>
@@ -68,7 +72,6 @@ class ProductShw extends Component {
 
             )
         }
-    // ) : <p>loading</p>
 }
 
 export default ProductShw
