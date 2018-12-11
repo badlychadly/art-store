@@ -41,7 +41,7 @@ class ProductRouter extends Component {
 
 
                 <Switch>
-                    <PrivateRoute path="/products/new" logged_in={this.props.logged_in} component={ProductForm} />
+                    <PrivateRoute path="/products/new" newProduct={this.props.newProduct} logged_in={this.props.logged_in} component={ProductForm} />
                     <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
                     <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
@@ -53,7 +53,8 @@ class ProductRouter extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return ({
-        products: state.products,
+        products: state.products.products,
+        newProduct: state.products.newProduct,
         logged_in: state.session.hasToken,
         sendMessage: state.session.sendMessage
     })

@@ -50,11 +50,13 @@ class ProductForm extends Component {
         // debugger;
     }
 
+    // ALTER THE GOBACK SECTION FOR EDIT
+    // CHANGE THE STATE BACK TO FALSE FOR NEWpRODUCT
 
     handleOnSubmit = event => {
         event.preventDefault()
         !!this.props.product ? this.props.updateProduct(this.state.productInfo) : this.props.addProduct(this.state.productInfo)
-        this.props.history.goBack()
+        // this.props.history.goBack()
     }
 
 

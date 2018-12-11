@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
     end
 
     def update
-        # binding.pry
         @product.update_attributes(product_params)
         render json: @product, status: 202
     end

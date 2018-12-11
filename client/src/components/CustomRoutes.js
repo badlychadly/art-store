@@ -4,21 +4,32 @@ import { Route, Redirect } from 'react-router-dom'
 // ADD CUSTOM ROUTE FOR SUCCESSFUL LOGIN
 
 
-export function PrivateRoute({ component: Component, logged_in, ...rest }) {
+export function PrivateRoute({ component: Component, newProduct, logged_in, ...rest }) {
     return (
       <Route
         {...rest}
-        render={props =>
-          logged_in ? (
-            <Component {...props} />
-          ) : ( 
-              <Redirect to={{
-                  pathname: '/',
-                  state: {
-                    from: props.location, error: true
-                  }
-              }} />
-          )
+        render={props => {
+          // debugger;
+          if (logged_in && !!newProduct.id) {
+            console.log(newProduct)
+            return <Redirect to={`/products/${newProduct.id}`} />
+            // return <Component {...props} />
+          } else if (logged_in) {
+            return <Component {...props} />
+          } else {
+            return <Redirect to={{
+              pathname: '/',
+              state: {
+                from: props.location, error: true
+              }
+          }} />
+          }
+      
+
+        }
+           
+              
+          
         }
       />
     );

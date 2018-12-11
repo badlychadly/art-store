@@ -1,19 +1,25 @@
 
 
-export default (state = [], action) => {
+export default (state = {
+    products: [],
+    newProduct: {}
+}
+, action) => {
+    let products
     switch (action.type) {
         case "GET_PRODUCTS_SUCCESS":
-            return action.products
+        return {...state, products: action.products}
         case "ADD_PRODUCT":
-            return state.concat(action.product)
-        case "DELETE_PRODUCT":
-            // debugger;
-            const products = state.filter(product => product.id !== action.product.id);
-            return products 
-        case "UPDATE_PRODUCT":
-        // const products = state.filter(product => product.id !== action.product.id)
         // debugger;
-            return [state.filter(product => product.id !== action.product.id), action.product]
+            return {...state, products: state.products.concat(action.product), newProduct: action.product}
+        case "DELETE_PRODUCT":
+            products = state.products.filter(product => product.id !== action.product.id);
+            return {...state, products: products} 
+        case "UPDATE_PRODUCT":
+        // products = state.filter(product => product.id !== action.product.id)
+            products = [...state.products.filter(product => product.id !== action.product.id), action.product]
+            
+            return {...state, products: products}
     
         default:
             return state;
