@@ -10,7 +10,6 @@ import { addProduct, updateProduct } from '../actions/products'
 class ProductForm extends Component {
     constructor(props) {
         super(props)
-        // debugger;
         this.state = {
             productInfo: {
                 name: "",
@@ -55,8 +54,7 @@ class ProductForm extends Component {
         // debugger;
         this.props.history.replace({state: undefined})
     }
-    // ALTER THE GOBACK SECTION FOR EDIT
-    // CHANGE THE STATE BACK TO FALSE FOR NEWpRODUCT
+
 
     handleOnSubmit = event => {
         const { location } = this.props
