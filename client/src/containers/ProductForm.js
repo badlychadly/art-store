@@ -50,13 +50,25 @@ class ProductForm extends Component {
         // debugger;
     }
 
+
+    componentWillUnmount() {
+        // debugger;
+        this.props.history.replace({state: undefined})
+    }
     // ALTER THE GOBACK SECTION FOR EDIT
     // CHANGE THE STATE BACK TO FALSE FOR NEWpRODUCT
 
     handleOnSubmit = event => {
+        const { location } = this.props
         event.preventDefault()
         !!this.props.product ? this.props.updateProduct(this.state.productInfo) : this.props.addProduct(this.state.productInfo)
-        // this.props.history.goBack()
+        // console.log(this.props.location)
+        // debugger
+        !!(!!location.state && location.state.isEdit) && this.props.history.goBack()
+        // if (!!location.state && location.state.isEdit) {
+        //     this.props.history.goBack()
+            
+        // }
     }
 
 

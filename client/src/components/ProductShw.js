@@ -24,7 +24,10 @@ class ProductShw extends Component {
      viewButtons = () => {
         return ( 
           <div>
-            <Button size="sm" hidden={!this.props.logged_in} color="warning" tag={Link} to={`/products/${this.product.id}/edit`} >edit Content</Button>
+            <Button size="sm" hidden={!this.props.logged_in} color="warning" tag={Link} to={{
+                pathname: `/products/${this.product.id}/edit`,
+                state: {isEdit: true}
+            }} >edit Content</Button>
             <Link to='/'> 
               <Button size="sm" hidden={!this.props.logged_in} onClick={() => this.props.deleteProduct(this.product)} color="danger">danger</Button>
                             
