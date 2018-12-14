@@ -14,7 +14,7 @@ class Messages extends Component {
         if (this.props.sendError || this.props.confirmDelete) {
           this.setState({ visible: false }); 
             this.props.history.replace({pathname: this.props.location.pathname, state: undefined})
-        } else if (this.props.sendWelcome) {
+        } else if (this.props.sendMessage) {
           this.setState({ visible: false, calledReset: true });    
           this.props.resetMessage()
         }
@@ -47,7 +47,7 @@ class Messages extends Component {
     render() {
       return (
         <div>
-          { this.props.sendWelcome &&
+          { this.props.sendMessage.welcome &&
             <Alert color="success" isOpen={this.props.isOpen} toggle={this.onDismiss}>
               Welcome Admin!
             </Alert>
@@ -60,6 +60,11 @@ class Messages extends Component {
           { (this.props.confirmDelete) &&
             <Alert color="danger" isOpen={this.props.visible}>
               Product Deleted
+            </Alert>
+          }
+          { (this.props.sendMessage.logout) &&
+            <Alert color="danger" isOpen={this.props.visible}>
+              You are now logged out
             </Alert>
           }
         </div>

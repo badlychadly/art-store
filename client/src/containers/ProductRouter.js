@@ -53,6 +53,7 @@ class ProductRouter extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    // console.log(state)
     return ({
         products: state.products.products,
         newProduct: state.products.newProduct,
