@@ -11,9 +11,9 @@ class Messages extends Component {
       };
 
       selectTask = () => {
-        if (this.props.sendError) {
+        if (this.props.sendError || this.props.confirmDelete) {
           this.setState({ visible: false }); 
-            this.props.history.replace({pathname: this.props.location.pathname, state: {}})
+            this.props.history.replace({pathname: this.props.location.pathname, state: undefined})
         } else if (this.props.sendWelcome) {
           this.setState({ visible: false, calledReset: true });    
           this.props.resetMessage()
@@ -42,6 +42,8 @@ class Messages extends Component {
     this.state.calledReset || this.props.resetMessage()                                         
     };
   
+    // change sendMessage into object that contains {sendWelcome: true, sendLogout: false}
+    
     render() {
       return (
         <div>
@@ -53,6 +55,11 @@ class Messages extends Component {
           { (this.props.sendError) &&
             <Alert className="bg-danger border-0" isOpen={this.props.visible}>
               You do not have Access to this page
+            </Alert>
+          }
+          { (this.props.confirmDelete) &&
+            <Alert color="danger" isOpen={this.props.visible}>
+              Product Deleted
             </Alert>
           }
         </div>

@@ -24,8 +24,8 @@ const ListProducts = (props) => {
       }
 
       const renderMessages = () => {
-          if ((!!props.location.state && props.location.state.error) || props.sendMessage) {
-             return <Messages sendError={(!!props.location.state && props.location.state.error)} sendWelcome={props.sendMessage} history={props.history} resetMessage={props.resetMessage} sendMessage={props.sendMessage} location={props.location} />
+          if ((!!props.location.state) || props.sendMessage) {
+             return <Messages confirmDelete={(!!props.location.state && props.location.state.confirmDelete)} sendError={(!!props.location.state && props.location.state.error)} sendWelcome={props.sendMessage} history={props.history} resetMessage={props.resetMessage} sendMessage={props.sendMessage} location={props.location} />
           }
       }
 

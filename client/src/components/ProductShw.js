@@ -28,7 +28,7 @@ class ProductShw extends Component {
                 pathname: `/products/${this.product.id}/edit`,
                 state: {isEdit: true}
             }} >edit Content</Button>
-            <Link to='/'> 
+            <Link to={{pathname: '/', state: {confirmDelete: true}}}> 
               <Button size="sm" hidden={!this.props.logged_in} onClick={() => this.props.deleteProduct(this.product)} color="danger">danger</Button>
                             
             </Link>
