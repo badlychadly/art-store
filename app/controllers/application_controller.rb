@@ -8,17 +8,21 @@ class ApplicationController < ActionController::API
 
     def current_user
       if auth_present?
-        admin = Admin.find(auth["admin"])
-        if admin
-          @current_user ||= admin
+        begin
+          admin = Admin.find_by(id: auth["admin"])
+          if admin
+            @current_user ||= admin
+          end
+        rescue JWT::DecodeError
+          binding.pry
         end
       end
     end
 
-#     def authenticate
-#       render json: {error: "unauthorized"}, status: 401 
-#         unless logged_in?
-#     end
+    def authenticate
+      render json: {error: "unauthorized"}, status: 401 unless logged_in?
+    end
+
     private
 
 

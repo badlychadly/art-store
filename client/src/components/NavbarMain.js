@@ -63,9 +63,11 @@ export default class NavbarMain extends Component {
                     Option 2
                   </DropdownItem>
                   <DropdownItem divider />
+                  { this.props.logged_in &&
                   <DropdownItem onClick={this.handleLogOut}>
                     Logout
                   </DropdownItem>
+                  }
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

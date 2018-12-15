@@ -33,13 +33,6 @@ const ListProducts = (props) => {
     //   debugger;
         return (
             <div>
-                {/* { props.sendMessage &&
-                    <WelcomeMessage history={props.history} resetMessage={props.resetMessage} sendMessage={props.sendMessage} location={props.location} />
-                }
-                { (!!props.location.state && props.location.state.error) &&
-                <AuthError history={props.history} location={props.location} unTrack={props.unTrack} trackAttempt={props.trackAttempt} attemptedAccess={props.attemptedAccess} />
-            } */}
-            {/* <Messages history={props.history} resetMessage={props.resetMessage} sendMessage={props.sendMessage} location={props.location} /> */}
             {renderMessages()}
 
                 <CardColumns className="ListProducts">

@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
     # before_action :find_product, only: [:destroy, :update]
     before_action :logged_in?, :find_product, only: [:destroy, :create, :update]
+    # HANDLE WHEN USER TRIES TO MAKE REQUEST WITH AUTHENTICATION
+    # USE REDUX IN FRONT END TO AUTHENTICATE IF SESSION TOKEN IS REAL
     
 
     def index 
@@ -15,10 +17,10 @@ class ProductsController < ApplicationController
     end
 
     def update
+        # binding.pry
         @product.update_attributes(product_params)
         render json: @product, status: 202
     end
-
 
     def destroy
         @product.destroy
