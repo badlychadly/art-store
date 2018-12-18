@@ -28,6 +28,22 @@ export function loginSuccess() {
     return {type: "LOG_OUT"}
   }
 
+  export function verifyAdmin() {
+    return function(dispatch) {
+      return sessionApi.verifyAdmin().then(response => {
+        if (!response.ok) {
+          // debugger;
+          sessionStorage.removeItem('jwt')
+          return dispatch({type: "UNAUTHORIZED_JWT"})
+        }
+        return response.json()
+      })
+      .catch(error => {
+        debugger;
+      })
+    }
+  }
+
 
   export function resetMessage() {
     return {type: 'RESET_MESSAGE'}

@@ -1,4 +1,10 @@
 class SessionApi {
+
+  static requestHeaders() {
+    return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+  }
+
+
   static login(credentials) {
     // const request = new Request('http://10.0.0.99:3001/login', {
     //   method: 'POST',
@@ -34,6 +40,17 @@ class SessionApi {
       //   return error;
       // });
     } 
+
+
+
+    static verifyAdmin() {
+      const headers = this.requestHeaders()
+      return fetch('http://10.0.0.99:3001/verify_admin', {
+        method: 'GET',
+        headers: headers
+      })
+    }
   }
+
   
   export default SessionApi;
