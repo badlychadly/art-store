@@ -9,10 +9,11 @@ export default function sessionReducer(state = initialState, action) {
       case "LOG_IN_FAIL":
         return {...state, failedLogin: true}
       case "LOG_OUT":
-      return {...state, hasToken: !!sessionStorage.jwt, sendMessage: {logout: true}, isValidated: false}
-      case "UNAUTHORIZED_JWT":
-      // debugger;
-      return {...state, hasToken: !!sessionStorage.jwt, isValidated: false}
+        return {...state, hasToken: !!sessionStorage.jwt, sendMessage: {logout: true}, isValidated: false}
+      case "AUTHORIZED":
+        return {...state, hasToken: !!sessionStorage.jwt, isValidated: true}
+      case "UNAUTHORIZED":
+        return {...state, hasToken: !!sessionStorage.jwt}
       case "RESET_MESSAGE":
         return {...state, sendMessage: false}
       default: 

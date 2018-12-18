@@ -6,7 +6,6 @@ import { getProducts, deleteProduct, resetNewProduct } from '../actions/products
 import { logOutUser, resetMessage, verifyAdmin } from '../actions/session'
 import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
-import ProductShw from '../components/ProductShw'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
@@ -28,10 +27,6 @@ class ProductRouter extends Component {
         this.props.logged_in && this.props.verifyAdmin()
     }
 
-    // componentWillUpdate() {
-    //     // debugger;
-    //     this.props.logged_in && this.props.verifyAdmin()
-    // }
        
 
 
@@ -49,7 +44,9 @@ class ProductRouter extends Component {
 
                 <Switch>
                     <PrivateRoute path="/products/new" newProduct={this.props.newProduct} isValidated={this.props.isValidated} logged_in={this.props.logged_in} component={ProductForm} />
-                    <Route path={`/products/:productId`} render={routerProps => (<ProductShw products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} location={routerProps.location} {...routerProps} />)} />
+
+                    <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} {...routerProps} />)} />
+
                     <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
                 </Switch>

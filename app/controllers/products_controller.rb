@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     # before_action :find_product, only: [:destroy, :update]
-    before_action :logged_in?, :find_product, only: [:destroy, :create, :update]
+    before_action :authenticate, :find_product, only: [:destroy, :create, :update]
     # HANDLE WHEN USER TRIES TO MAKE REQUEST WITH AUTHENTICATION
     # USE REDUX IN FRONT END TO AUTHENTICATE IF SESSION TOKEN IS REAL
     

@@ -36,11 +36,23 @@ export const updateProduct = formData => {
 
 export const deleteProduct = product => {
     return dispatch => {
-        return ProductsApi.deleteProduct(product).then(resp => {
+        return ProductsApi.deleteProduct(product)
+        .then(resp => {
+            debugger
             if (resp.ok) {
-                dispatch({type: "DELETE_PRODUCT", product})}
+                dispatch({type: "DELETE_PRODUCT", product})
+            } else {
+                return resp.json().then(({error}) => {
+                    // debugger;
+                    return dispatch({type: "UNAUTHORIZED"})
+                    // throw Error(error)
+                })
+                // throw Error(resp.json())
             }
-        )
+        })
+        .catch(err => {
+            // debugger
+        })
     }
 }
 

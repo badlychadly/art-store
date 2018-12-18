@@ -1,82 +1,80 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Route, Link, Redirect } from 'react-router-dom'
 import { Button, Row, Col  } from 'reactstrap';
 import ProductCard from './ProductCard'
-// import EditForm from './EditProductForm'
-// import './EditInput.css'
-// import ProductInput from './ProductInput'
+
 import ProductForm from '../containers/ProductForm'
 import InfoTabs from './InfoTabs'
+import { PrivateRoute, AdminLoginRoute } from './CustomRoutes'
 
 
-const ProductShow = (props) => {
+
+class ProductShw extends Component {
     
-    const product = props.products.find(({ id }) => String(id) === props.match.params.productId)
+     product = this.props.products.find(({ id }) => {
+        // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
+        // debugger;
+        return String(id) === this.props.match.params.productId
+    })
 
-    const viewButtons = () => {
+    componentDidMount() {
+        !!this.props.newProduct.id && this.props.resetNewProduct() 
+    }
+
+     viewButtons = () => {
         return ( 
           <div>
-            <Button size="sm" hidden={!props.logged_in} color="warning" tag={Link} to={`/products/${product.id}/edit`} >edit Content</Button>
-            <Link to='/'> 
-              <Button size="sm" hidden={!props.logged_in} onClick={() => props.deleteProduct(product)} color="danger">danger</Button>
+            <Button size="sm" hidden={!this.props.isValidated} color="warning" tag={Link} to={{
+                pathname: `/products/${this.product.id}/edit`,
+                state: {isEdit: true}
+            }} >edit Content</Button>
+            <Link to={{pathname: '/', state: {confirmDelete: true}}}> 
+              <Button size="sm" hidden={!this.props.isValidated} onClick={() => this.props.deleteProduct(this.product)} color="danger">danger</Button>
                             
             </Link>
           </div>
         )
     }
-
-    // const deleteButton = () => {
-    //     return (
-    //         <Button hidden={!props.logged_in} onClick={() => props.deleteProduct(product)} color="danger">danger</Button>
-            
-    //     )
-    // }
-
-    // const editButton = () => {
-    //     return (
-    //         <Button hidden={!props.logged_in} color="warning" tag={Link} to={`/products/${product.id}/edit`} >edit Content</Button>
-    //     )
-    // }
-    // console.log(props)
-
-    // console.log(props)
-    return props.products.length ? (
-        <div>
-            <h3 className="text-white">{product.name}</h3>
-            {/* <Container className="m-0"> */}
-                <Row className="mx-0">
-                    <Col sm="8">
-                        <ProductCard product={product} />
-                        {/* <img src={product.img_url} alt={product.name}/> */}
-                    </Col>
-                    <Col sm="4">
-                    {/* <Col className="px-0 align-self-center" sm="4"> */}
-
-                    {/* <Route exact path={`/products/:productId`} render={routerProps => <InfoTabs product={product} logged_in={props.logged_in} deleteProduct={props.deleteProduct} {...routerProps} /> } /> */}
-
-                    <InfoTabs product={product} logged_in={props.logged_in} deleteProduct={props.deleteProduct} />
-                    
-                    {/* <InfoTabs product={product} logged_in={props.logged_in} location={props.location} /> */}
-                    {/* {editButton()} */}
-
-
-
+    
+    // return this.props.products.length ? (
+        render() {
+            // debugger;
+            return (
+            <div>
+                <h3 className="text-white">{this.product.name}</h3>
+                {/* <Container className="m-0"> */}
+                    <Row className="mx-0">
+                        <Col sm="8">
+                            <ProductCard product={this.product} />
+                            {/* <img src={product.img_url} alt={product.name}/> */}
+                        </Col>
+                        <Col sm="4">
+                        
+    
+                        <InfoTabs product={this.product} logged_in={this.props.logged_in} deleteProduct={this.props.deleteProduct} />
+                        
+    
+    
+    
+                            {/* <PrivateRoute path="/products/new" product={this.product} logged_in={this.props.logged_in} component={ProductForm} /> */}
+                                
+                                <Route path={`/products/:productId/edit`} render={routerProps => this.props.logged_in ? <ProductForm product={this.product} {...routerProps}/>: <Redirect to={`/products/${this.product.id}`} />} />
+                            {/* </ListGroup> */}
                             
-                            <Route path={`/products/:productId/edit`} render={routerProps => props.logged_in ? <ProductForm product={product} {...routerProps}/>: <Redirect to={`/products/${product.id}`} />} />
-                        {/* </ListGroup> */}
-                        
-                        {/* <Link to='/'>  */}
-                        {viewButtons()}
-                        
-                            {/* {deleteButton()} */}
-                        {/* </Link> */}
-                    </Col>
+                            {/* <Link to='/'>  */}
+                            {this.viewButtons()}
+                            
+                                {/* {deleteButton()} */}
+                            {/* </Link> */}
+                        </Col>
+    
+                    </Row>
+    
+                {/* </Container> */}
+            </div>
 
-                </Row>
-
-            {/* </Container> */}
-        </div>
-    ) : <p>loading</p>
+            )
+        }
 }
 
-export default ProductShow
+export default ProductShw

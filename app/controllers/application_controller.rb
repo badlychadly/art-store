@@ -15,7 +15,6 @@ class ApplicationController < ActionController::API
           end
         rescue JWT::DecodeError
           admin
-          # binding.pry
         end
       end
     end

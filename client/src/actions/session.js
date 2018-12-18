@@ -34,9 +34,11 @@ export function loginSuccess() {
         if (!response.ok) {
           // debugger;
           sessionStorage.removeItem('jwt')
-          return dispatch({type: "UNAUTHORIZED_JWT"})
+          return dispatch({type: "UNAUTHORIZED"})
+        } else {
+          return dispatch({type: "AUTHORIZED"})
         }
-        return response.json()
+        // return response.json()
       })
       .catch(error => {
         debugger;
