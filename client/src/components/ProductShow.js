@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Route, Link, Redirect } from 'react-router-dom'
-import { Button, Row, Col  } from 'reactstrap';
+import { Button, Row, Col, Container  } from 'reactstrap';
 import ProductCard from './ProductCard'
 
 import ProductForm from '../containers/ProductForm'
 import InfoTabs from './InfoTabs'
 import { PrivateRoute, AdminLoginRoute } from './CustomRoutes'
 
+// FOR CSS JITTER TRY REMOVING THE products.css on show page
 
-
-class ProductShw extends Component {
+class ProductShow extends Component {
     
      product = this.props.products.find(({ id }) => {
         // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
@@ -36,16 +36,20 @@ class ProductShw extends Component {
         )
     }
     
-    // return this.props.products.length ? (
         render() {
             // debugger;
             return (
             <div>
+                {/* <Container> */}
                 <h3 className="text-white">{this.product.name}</h3>
                 {/* <Container className="m-0"> */}
                     <Row className="mx-0">
                         <Col sm="8">
-                            <ProductCard product={this.product} />
+                            <div className="px-1">
+                                <ProductCard product={this.product} />
+
+                            </div>
+                        
                             {/* <img src={product.img_url} alt={product.name}/> */}
                         </Col>
                         <Col sm="4">
@@ -77,4 +81,4 @@ class ProductShw extends Component {
         }
 }
 
-export default ProductShw
+export default ProductShow
