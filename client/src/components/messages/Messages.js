@@ -46,13 +46,20 @@ class Messages extends Component {
     
     render() {
       return (
-        <div>
+        <div className="z-index-1">
           { this.props.sendMessage.welcome &&
             <Alert color="success" isOpen={this.props.isOpen} toggle={this.onDismiss}>
               Welcome Admin!
             </Alert>
           }
           { (this.props.sendError) &&
+          
+      //     position: absolute;
+      //     z-index: 1;
+      //     opacity: .9;
+      // }
+
+          // <div className="bg-danger w-100 py-3"> You do not have Access to this page</div>
             <Alert className="bg-danger border-0" isOpen={this.props.visible}>
               You do not have Access to this page
             </Alert>
