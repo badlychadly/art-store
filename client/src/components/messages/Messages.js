@@ -25,7 +25,7 @@ class Messages extends Component {
           this.timerHandle = setTimeout(() => {
             this.selectTask()
             this.timerHandle = 0;              
-        }, 2000);
+        }, 4000);
       }
 
   
@@ -46,31 +46,36 @@ class Messages extends Component {
     
     render() {
       return (
-        <div className="z-index-1">
+        <div className="Message w-100">
           { this.props.sendMessage.welcome &&
-            <Alert color="success" isOpen={this.props.isOpen} toggle={this.onDismiss}>
+            <Alert className="text-white bg-primary border-0" 
+            isOpen={this.state.visible} 
+            toggle={this.onDismiss}>
               Welcome Admin!
             </Alert>
           }
           { (this.props.sendError) &&
           
-      //     position: absolute;
-      //     z-index: 1;
-      //     opacity: .9;
-      // }
+          
 
-          // <div className="bg-danger w-100 py-3"> You do not have Access to this page</div>
-            <Alert className="bg-danger border-0" isOpen={this.props.visible}>
+          // <div className="Message text-white bg-danger w-100 py-3"> You do not have Access to this page</div>
+            <Alert className="text-white bg-danger border-0" 
+            isOpen={this.state.visible}
+            toggle={this.onDismiss}>
               You do not have Access to this page
             </Alert>
           }
           { (this.props.confirmDelete) &&
-            <Alert color="danger" isOpen={this.props.visible}>
-              Product Deleted
+            <Alert className="bg-success border-0 text-white" 
+            isOpen={this.state.visible}
+            toggle={this.onDismiss}>
+              Product has been removed
             </Alert>
           }
           { (this.props.sendMessage.logout) &&
-            <Alert color="danger" isOpen={this.props.visible}>
+            <Alert className="bg-info text-white border-0" 
+            isOpen={this.state.visible}
+            toggle={this.onDismiss}>
               You are now logged out
             </Alert>
           }
