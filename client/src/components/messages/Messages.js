@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Alert } from 'reactstrap';
-import WelcomeMessage from './WelcomeMessage'
-import AuthError from './AuthError'
 
 
 class Messages extends Component {
@@ -42,40 +40,42 @@ class Messages extends Component {
     this.state.calledReset || this.props.resetMessage()                                         
     };
   
-    // change sendMessage into object that contains {sendWelcome: true, sendLogout: false}
     
     render() {
       return (
         <div className="Message w-100">
           { this.props.sendMessage.welcome &&
-            <Alert className="text-white bg-primary border-0" 
-            isOpen={this.state.visible} 
-            toggle={this.onDismiss}>
+            <Alert 
+              className="text-white bg-primary border-0" 
+              isOpen={this.state.visible} 
+              toggle={this.onDismiss}>
               Welcome Admin!
             </Alert>
           }
-          { (this.props.sendError) &&
-          
-          
 
-          // <div className="Message text-white bg-danger w-100 py-3"> You do not have Access to this page</div>
-            <Alert className="text-white bg-danger border-0" 
-            isOpen={this.state.visible}
-            toggle={this.onDismiss}>
+          { (this.props.sendError) &&
+            <Alert 
+              className="text-white bg-danger border-0" 
+              isOpen={this.state.visible}
+              toggle={this.onDismiss}>
               You do not have Access to this page
             </Alert>
           }
+
           { (this.props.confirmDelete) &&
-            <Alert className="bg-success border-0 text-white" 
-            isOpen={this.state.visible}
-            toggle={this.onDismiss}>
+            <Alert 
+              className="bg-success border-0 text-white" 
+              isOpen={this.state.visible}
+              toggle={this.onDismiss}>
               Product has been removed
             </Alert>
           }
+
           { (this.props.sendMessage.logout) &&
-            <Alert className="bg-info text-white border-0" 
-            isOpen={this.state.visible}
-            toggle={this.onDismiss}>
+            <Alert 
+              className="bg-info text-white border-0" 
+              isOpen={this.state.visible}
+              toggle={this.onDismiss}>
               You are now logged out
             </Alert>
           }

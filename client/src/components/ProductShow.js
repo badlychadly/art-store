@@ -7,15 +7,11 @@ import ProductForm from '../containers/ProductForm'
 import InfoTabs from './InfoTabs'
 import { PrivateRoute, AdminLoginRoute } from './CustomRoutes'
 
-// FOR CSS JITTER TRY REMOVING THE products.css on show page
+// ADD PRODUCT SHOW TO CUSTOMROUTES.JS, CREATE A METHOD TO FIND THE PRODUCT AND PASS IT AS PROP
 
 class ProductShow extends Component {
     
-     product = this.props.products.find(({ id }) => {
-        // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
-        // debugger;
-        return String(id) === this.props.match.params.productId
-    })
+    
 
     componentDidMount() {
         !!this.props.newProduct.id && this.props.resetNewProduct() 
@@ -36,13 +32,21 @@ class ProductShow extends Component {
         )
     }
     
+    
         render() {
+            this.product = this.props.product
             // debugger;
+            // this.product = this.props.products.find(({ id }) => {
+            //     // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
+            //     // debugger;
+            //     return String(id) === this.props.match.params.productId
+            // })
             return (
             <div>
                 {/* <Container> */}
                 <h3 className="text-white">{this.product.name}</h3>
                 {/* <Container className="m-0"> */}
+                {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
                     <Row className="mx-0">
                         <Col sm="8">
                             <div className="px-1">
@@ -73,6 +77,7 @@ class ProductShow extends Component {
                         </Col>
     
                     </Row>
+                    {/* <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} {...routerProps} />)} /> */}
     
                 {/* </Container> */}
             </div>

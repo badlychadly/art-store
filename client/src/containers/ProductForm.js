@@ -117,7 +117,7 @@ class ProductForm extends Component {
                             <FormGroup row>
                             <Label for="exampleFile" sm={2} className="text-dark">File</Label>
                             <Col sm={10}>
-                                <Input type="file" name="file" id="exampleFile" />
+                                <Input type="file" name="file" id="exampleFile" accept="image/*" />
                                 <FormText color="muted">
                                 This is some placeholder block-level help text for the above input.
                                 It's a bit lighter and easily wraps to a new line.

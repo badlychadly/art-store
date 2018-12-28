@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { CardColumns } from 'reactstrap';
 
 import ProductCard from '../components/ProductCard'
-import AuthError from '../components//messages/AuthError'
-import WelcomeMessage from '../components/messages/WelcomeMessage'
 import Messages from './messages/Messages'
 
 import '../Products.css'

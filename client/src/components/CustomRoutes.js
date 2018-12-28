@@ -47,3 +47,26 @@ export function PrivateRoute({ component: Component, newProduct, isValidated, lo
       <Component logged_in={logged_in} {...routerProps} />)} /> 
     )
   }
+
+  
+  export function ShowProductRoute({component: Component, path, logged_in, products, newProduct, resetNewProduct, deleteProduct, isValidated, ...rest}) {
+    // debugger
+    let {computedMatch} = rest
+    let product = products.find(({ id }) => {
+      // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
+      // debugger;
+      return String(id) === computedMatch.params.productId
+  })
+  // debugger;
+
+//   let nextProduct = products.find(({ id }) => {
+//     // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
+//     // debugger;
+//     return String(id) === computedMatch.params.productId
+// })
+
+    return (
+      <Route path={path} {...rest} render={routerProps => (<Component product={product} products={products} newProduct={newProduct} resetNewProduct={resetNewProduct} deleteProduct={deleteProduct} logged_in={logged_in} isValidated={isValidated} {...routerProps} />)} />
+      
+    )
+  }
