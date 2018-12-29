@@ -16,7 +16,8 @@ class ProductForm extends Component {
                 price: "",
                 description: "",
                 img_url: "",
-                prints: false
+                prints: false,
+                uploadedPhotos: []
             },
             modal: true
         }
@@ -80,6 +81,10 @@ class ProductForm extends Component {
         })
     }
 
+    onPhotoSelected = event => {
+        debugger;
+    }
+
     render() {
         // console.log(this)
         return (
@@ -117,7 +122,15 @@ class ProductForm extends Component {
                             <FormGroup row>
                             <Label for="exampleFile" sm={2} className="text-dark">File</Label>
                             <Col sm={10}>
-                                <Input type="file" name="file" id="exampleFile" accept="image/*" />
+
+                                <Input 
+                                    type="file" 
+                                    name="file" 
+                                    id="fileUpload" 
+                                    accept="image/*"  
+                                    ref={fileInputEl => (this.fileInputEl = fileInputEl) }
+                                    onChange={this.onPhotoSelected} />
+
                                 <FormText color="muted">
                                 This is some placeholder block-level help text for the above input.
                                 It's a bit lighter and easily wraps to a new line.
