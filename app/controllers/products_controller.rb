@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     end
 
     def create
+        # binding.pry
         product = Product.new(product_params)
         if product.save
             render json: product, status: 201

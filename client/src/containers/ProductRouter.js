@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import { getProducts, deleteProduct, resetNewProduct } from '../actions/products'
+import { getProducts, deleteProduct, resetNewProduct, addPicture } from '../actions/products'
 import { logOutUser, resetMessage, verifyAdmin } from '../actions/session'
 import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
+import FileInput from '../components/FileInput'
 import NavbarMain from '../components/NavbarMain'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
 
@@ -35,6 +36,7 @@ class ProductRouter extends Component {
         return this.props.products.length ? (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
+            <FileInput addPicture={this.props.addPicture} />
             
                 
                 {/* <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   */}
@@ -68,4 +70,4 @@ const mapStateToProps = (state, ownProps) => {
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin, addPicture })(ProductRouter);

@@ -17,7 +17,7 @@ class ProductForm extends Component {
                 description: "",
                 img_url: "",
                 prints: false,
-                uploadedPhotos: []
+                picture: null
             },
             modal: true
         }
@@ -58,6 +58,7 @@ class ProductForm extends Component {
 
 
     handleOnSubmit = event => {
+        console.log(this.state.productInfo)
         const { location } = this.props
         event.preventDefault()
         !!this.props.product ? this.props.updateProduct(this.state.productInfo) : this.props.addProduct(this.state.productInfo)
@@ -81,9 +82,11 @@ class ProductForm extends Component {
         })
     }
 
-    onPhotoSelected = event => {
-        debugger;
-    }
+    handleFileUpload = e => {
+        this.setState({
+          ...this.state.productInfo, picture: e.target.files[0],
+        });
+    };
 
     render() {
         // console.log(this)
@@ -125,11 +128,12 @@ class ProductForm extends Component {
 
                                 <Input 
                                     type="file" 
-                                    name="file" 
+                                    name="picture" 
                                     id="fileUpload" 
                                     accept="image/*"  
                                     ref={fileInputEl => (this.fileInputEl = fileInputEl) }
-                                    onChange={this.onPhotoSelected} />
+                                    onChange={this.handleFileUpload} 
+                                />
 
                                 <FormText color="muted">
                                 This is some placeholder block-level help text for the above input.

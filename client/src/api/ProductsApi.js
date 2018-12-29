@@ -13,7 +13,15 @@ class ProductsApi {
 
 
     static createProduct(formData) {
+        debugger;
         const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders())
+        let data = new FormData()
+        data.append()
+        data.append()
+        data.append()
+        data.append()
+        data.append()
+        data.append()
         return fetch('http://10.0.0.99:3001/products', {
             method: "POST",
             headers: headers,
