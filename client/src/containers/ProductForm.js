@@ -83,8 +83,11 @@ class ProductForm extends Component {
     }
 
     handleFileUpload = e => {
+        let state = this.state
+        // debugger;
         this.setState({
-          ...this.state.productInfo, picture: e.target.files[0],
+            ...state, 
+            productInfo: {...state.productInfo, picture: e.target.files[0]}
         });
     };
 

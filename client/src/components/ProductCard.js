@@ -2,16 +2,21 @@ import React from 'react'
 import {Card, CardImg} from 'reactstrap'
 
 
-const ProductCard = ({product}) => (
-    <Card className="ProductCard">
-        <CardImg top width="100%" title={product.name} src={product.img_url} alt={product.name} />
-    </Card>
+const ProductCard = ({product}) => {
+    // debugger
+    return (
+        <Card className="ProductCard">
+            {/* <CardImg top width="100%" title={product.name} src={!!product.picture ? `....../public{product.picture.url}` : product.img_url} alt={product.name} /> */}
+            <CardImg top width="100%" title={product.name} src={product.img_url} alt={product.name} />
+        </Card>
+    
+    
+        // <div className="ProductCard">
+        // <img className="ProductImage" title={product.name} src={product.img_url} alt={product.name}/>
+        // </div>
+    )
 
-
-    // <div className="ProductCard">
-    // <img className="ProductImage" title={product.name} src={product.img_url} alt={product.name}/>
-    // </div>
-)
+}
 
 
 export default ProductCard;

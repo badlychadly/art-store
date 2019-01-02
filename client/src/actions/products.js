@@ -18,9 +18,10 @@ export const getProducts  = () => {
 }
 
 export const addProduct = formData => {
-    debugger
+    // debugger
     return dispatch => {
         return ProductsApi.createProduct(formData).then(product => {
+            debugger;
             dispatch({type: "ADD_PRODUCT", product})
         })
         .catch(error => console.log(error))
@@ -39,7 +40,7 @@ export const deleteProduct = product => {
     return dispatch => {
         return ProductsApi.deleteProduct(product)
         .then(resp => {
-            debugger
+            // debugger
             if (resp.ok) {
                 dispatch({type: "DELETE_PRODUCT", product})
             } else {

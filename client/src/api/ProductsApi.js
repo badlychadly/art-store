@@ -13,21 +13,26 @@ class ProductsApi {
 
 
     static createProduct(formData) {
-        debugger;
-        const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders())
+        // debugger;
+        // const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders())
         let data = new FormData()
-        data.append()
-        data.append()
-        data.append()
-        data.append()
-        data.append()
-        data.append()
+        // debugger;
+        data.append('name', formData.name)
+        data.append('price', formData.price)
+        data.append('description', formData.description)
+        data.append('img_url', formData.img_url)
+        data.append('picture', formData.picture)
+        data.append('prints', formData.prints)
         return fetch('http://10.0.0.99:3001/products', {
             method: "POST",
-            headers: headers,
-            body: JSON.stringify(formData)
+            // headers: headers,
+            // body: JSON.stringify(formData)
+            body: data
         })
-        .then(resp => resp.json())
+        .then(resp => {
+            // debugger;
+            return resp.json()
+        })
     }
 
 
