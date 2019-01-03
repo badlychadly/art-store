@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import { getProducts, deleteProduct, resetNewProduct, addPicture } from '../actions/products'
+import { getProducts, deleteProduct, resetNewProduct } from '../actions/products'
 import { logOutUser, resetMessage, verifyAdmin } from '../actions/session'
 import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
-import FileInput from '../components/FileInput'
 import NavbarMain from '../components/NavbarMain'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
 
@@ -70,4 +69,4 @@ const mapStateToProps = (state, ownProps) => {
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin, addPicture })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin })(ProductRouter);

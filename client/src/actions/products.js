@@ -61,23 +61,3 @@ export const deleteProduct = product => {
 export const resetNewProduct = () => {
     return {type: "RESET_NEW_PRODUCT"}
 }
-
-export const addPicture = (picture) => {
-    debugger;
-    return dispatch => {
-        const headers = ProductsApi.requestHeaders()
-        let data = new FormData()
-        data.append('picture', picture)
-        fetch('http://10.0.0.99:3001/products', {
-            method: 'POST',
-            headers: headers,
-            body: data,
-        })
-        .then(response => {
-            debugger;
-        })
-        .then(pic => {
-            debugger
-        })
-    }
-}
