@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
             # product.picture has no file and has cache_storage = CarrierWave::Storage::File:
             # new_product.picture has a file = Cloudinary::CarrierWave::CloudinaryFile:
             new_product = Product.find_by(id: product.id)
-            # binding.pry
             render json: new_product, status: 201
         end
     end

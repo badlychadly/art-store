@@ -35,7 +35,6 @@ class ProductRouter extends Component {
         return this.props.products.length ? (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
-            <FileInput addPicture={this.props.addPicture} />
             
                 
                 {/* <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   */}
