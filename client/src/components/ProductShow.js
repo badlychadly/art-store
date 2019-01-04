@@ -49,7 +49,7 @@ class ProductShow extends Component {
                 {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
                     <Row className="mx-0">
                         <Col sm="8">
-                            <div className="px-1">
+                            <div className="px-1 pb-1">
                                 <ProductCard product={this.product} />
 
                             </div>

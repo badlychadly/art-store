@@ -40,9 +40,6 @@ export function loginSuccess() {
         }
         // return response.json()
       })
-      .catch(error => {
-        debugger;
-      })
     }
   }
 

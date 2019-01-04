@@ -129,7 +129,7 @@ class ProductForm extends Component {
                             <FormGroup row>
                             <Label for="exampleFile" sm={2} className="text-dark">File</Label>
                             <Col sm={10}>
-
+                                {/* ADD TEXT OF FILENAME */}
                                 <Input 
                                     type="file" 
                                     name="picture" 

@@ -5,15 +5,12 @@ import { Route, Redirect } from 'react-router-dom'
 
 
 export function PrivateRoute({ component: Component, newProduct, isValidated, logged_in, ...rest }) {
-  // debugger;
     return (
       <Route
         {...rest}
         render={props => {
-          // debugger;
           if (logged_in && !!newProduct.id) {
             return <Redirect to={`/products/${newProduct.id}`} />
-            // return <Component {...props} />
           } else if (logged_in && isValidated) {
             return <Component {...props} />
           } else {
