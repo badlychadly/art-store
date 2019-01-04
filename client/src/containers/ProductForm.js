@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 // import { Link } from 'react-router-dom'
 import { Col, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, 
-    ModalBody, ModalFooter } from 'reactstrap'
+    ModalBody, ModalFooter, CardImg } from 'reactstrap'
 import '../components/CustomModal.css'
 import { addProduct, updateProduct } from '../actions/products'
 
@@ -11,6 +11,7 @@ class ProductForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            previewUrl: '',
             productInfo: {
                 name: "",
                 price: "",
@@ -23,14 +24,6 @@ class ProductForm extends Component {
         }
     }
     
-    // state = {
-    //     productInfo: {name: "",
-    //     price: "",
-    //     description: "",
-    //     img_url: "",
-    //     prints: true},
-    //     modal: true
-    // }
 
 
     checkForProduct = () => {
@@ -84,12 +77,28 @@ class ProductForm extends Component {
 
     handleFileUpload = e => {
         let state = this.state
+        let reader = new FileReader()
+        let file = e.target.files[0];
+        
         // debugger;
-        this.setState({
-            ...state, 
-            productInfo: {...state.productInfo, picture: e.target.files[0]}
-        });
+        reader.onloadend = () => {
+            this.setState({
+                ...state, 
+                previewUrl: reader.result,
+                productInfo: {...state.productInfo, picture: file}
+            })
+
+        }
+        // debugger;
+        reader.readAsDataURL(file)
     };
+
+    // previewPic = (file) => {
+    //     let reader = new FileReader()
+    //     let url = reader.readAsDataURL(file)
+    //     // <img src={new FileReader().readAsDataURL(this.state.productInfo.picture)} alt="pic"/>
+    //     return <img src={url} alt="pic"/>
+    // }
 
     render() {
         // debugger;
@@ -129,20 +138,24 @@ class ProductForm extends Component {
                             <FormGroup row>
                             <Label for="exampleFile" sm={2} className="text-dark">File</Label>
                             <Col sm={10}>
-                                {/* ADD TEXT OF FILENAME */}
-                                <Input 
+                                <Input className="text-dark"
                                     type="file" 
                                     name="picture" 
                                     id="fileUpload" 
                                     accept="image/*"  
                                     ref={fileInputEl => (this.fileInputEl = fileInputEl) }
                                     onChange={this.handleFileUpload} 
-                                />
-
+                                /> 
+                                {/* create method to display preview info */}
                                 <FormText color="muted">
-                                This is some placeholder block-level help text for the above input.
-                                It's a bit lighter and easily wraps to a new line.
+                                Preview
                                 </FormText>
+                                { !!this.state.productInfo.picture &&
+                                    // <CardImg width="100px" src={this.state.previewUrl} alt="pic" />
+                                    <img className="mt-1" width="50%" src={this.state.previewUrl} alt="pic"/>
+
+                                }
+
                             </Col>
                             </FormGroup>
                             <FormGroup check>
