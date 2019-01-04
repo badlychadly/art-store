@@ -22,16 +22,19 @@ class ProductRouter extends Component {
 
 
     componentDidMount() {
-        // debugger;
-        !!this.props.products.length || this.props.getProducts()
-        this.props.logged_in && this.props.verifyAdmin()
+ 
+        if (this.props.logged_in && !this.props.products.length ) {
+            return this.props.verifyAdmin().then(this.props.getProducts)
+        } else {
+            return this.props.getProducts()
+        }
     }
+
 
        
 
 
     render() {
-        // debugger;
         return this.props.products.length ? (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />

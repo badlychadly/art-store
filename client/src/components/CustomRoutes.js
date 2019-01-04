@@ -5,6 +5,7 @@ import { Route, Redirect } from 'react-router-dom'
 
 
 export function PrivateRoute({ component: Component, newProduct, isValidated, logged_in, ...rest }) {
+  // debugger;
     return (
       <Route
         {...rest}

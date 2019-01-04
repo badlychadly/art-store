@@ -13,7 +13,10 @@ const setProducts = products => {
 export const getProducts  = () => {
     return dispatch => {
 
-        return ProductsApi.getAllProducts().then(products => dispatch(setProducts(products)))
+        return ProductsApi.getAllProducts().then(products => {
+            // debugger
+            return dispatch(setProducts(products))
+        })
     }
 }
 
