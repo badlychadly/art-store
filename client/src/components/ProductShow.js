@@ -43,16 +43,18 @@ class ProductShow extends Component {
             // })
             return (
             <div>
-                {/* <Container> */}
+                <Container>
                 <h3 className="text-white">{this.product.name}</h3>
                 {/* <Container className="m-0"> */}
                 {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
                     <Row className="mx-0">
                         <Col sm="8">
-                            <div className="px-1 pb-1">
+                        <Container>
                                 <ProductCard product={this.product} />
+                        </Container>
+                            {/* <div className="px-1 pb-1"> */}
 
-                            </div>
+                            {/* </div> */}
                         
                             {/* <img src={product.img_url} alt={product.name}/> */}
                         </Col>
@@ -79,7 +81,7 @@ class ProductShow extends Component {
                     </Row>
                     {/* <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} {...routerProps} />)} /> */}
     
-                {/* </Container> */}
+                </Container>
             </div>
 
             )

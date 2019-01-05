@@ -31,6 +31,7 @@ class ProductForm extends Component {
         const { product } = this.props
         if (!!this.props.product) {
             this.setState({
+                previewUrl: product.picture.url,
                 productInfo: product
                 // name: name,
                 // price: price
@@ -93,12 +94,19 @@ class ProductForm extends Component {
         reader.readAsDataURL(file)
     };
 
-    // previewPic = (file) => {
-    //     let reader = new FileReader()
-    //     let url = reader.readAsDataURL(file)
-    //     // <img src={new FileReader().readAsDataURL(this.state.productInfo.picture)} alt="pic"/>
-    //     return <img src={url} alt="pic"/>
-    // }
+    previewPicture = (file) => {
+       return !!this.state.productInfo.picture &&
+        (
+        <>
+        <FormText color="primary">
+        Preview
+        </FormText>
+            <img className="mt-1 border border-primary bg-info" width="50%" src={this.state.previewUrl} alt="pic"/>
+            </>
+        )
+
+        
+    }
 
     render() {
         // debugger;
@@ -146,15 +154,16 @@ class ProductForm extends Component {
                                     ref={fileInputEl => (this.fileInputEl = fileInputEl) }
                                     onChange={this.handleFileUpload} 
                                 /> 
+                                {this.previewPicture()}
                                 {/* create method to display preview info */}
-                                <FormText color="muted">
+                                {/* <FormText color="muted">
                                 Preview
                                 </FormText>
                                 { !!this.state.productInfo.picture &&
                                     // <CardImg width="100px" src={this.state.previewUrl} alt="pic" />
                                     <img className="mt-1" width="50%" src={this.state.previewUrl} alt="pic"/>
 
-                                }
+                                } */}
 
                             </Col>
                             </FormGroup>
