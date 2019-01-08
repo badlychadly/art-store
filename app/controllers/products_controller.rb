@@ -14,8 +14,10 @@ class ProductsController < ApplicationController
         if product.save
             # product.picture has no file and has cache_storage = CarrierWave::Storage::File:
             # new_product.picture has a file = Cloudinary::CarrierWave::CloudinaryFile:
+            binding.pry
+            width, height = product.picture.metadata['width'], product.picture.metadata['height']
             new_product = Product.find_by(id: product.id)
-            render json: new_product, status: 201
+            render json: {product: new_product, width: width, height: height}, status: 201
         end
     end
 

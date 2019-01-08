@@ -52,7 +52,6 @@ class ProductForm extends Component {
 
 
     handleOnSubmit = event => {
-        console.log(this.state.productInfo)
         const { location } = this.props
         event.preventDefault()
         !!this.props.product ? this.props.updateProduct(this.state.productInfo) : this.props.addProduct(this.state.productInfo)

@@ -30,7 +30,7 @@ class ProductsApi {
             body: data
         })
         .then(resp => {
-            // debugger;
+            debugger;
             return resp.json()
         })
     }

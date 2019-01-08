@@ -7,7 +7,6 @@ import ProductForm from '../containers/ProductForm'
 import InfoTabs from './InfoTabs'
 import { PrivateRoute, AdminLoginRoute } from './CustomRoutes'
 
-// ADD PRODUCT SHOW TO CUSTOMROUTES.JS, CREATE A METHOD TO FIND THE PRODUCT AND PASS IT AS PROP
 
 class ProductShow extends Component {
     
@@ -49,9 +48,14 @@ class ProductShow extends Component {
                 {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
                     <Row className="mx-0">
                         <Col sm="8">
-                        <Container>
+                        {/* CONDITIONAL WIDTH ON CONTAINER */}
+                        <div className="imageControl">
+                        <ProductCard product={this.product} />
+                            
+                        </div>
+                        {/* <Container className="w-75">
                                 <ProductCard product={this.product} />
-                        </Container>
+                        </Container> */}
                             {/* <div className="px-1 pb-1"> */}
 
                             {/* </div> */}

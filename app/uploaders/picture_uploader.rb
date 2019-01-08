@@ -3,16 +3,26 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
+  attr_accessor :width
 
-  # process :convert => 'png'
+  cloudinary_transformation :image_metadata=>true
+
+  # TRY GIVING PICTURE_UPLOADER ATTRIBUTS IN DB OF WIDTH AND HEIGHT AND SEND FROM FRONT END FORM
 
   version :standard do
-    process :resize_to_fill => [100, 150, :north]
+    # process :width
   end
 
   # def url
   #   binding.pry
   #   @metadata['url']
+  # end
+
+  # def width
+  #   binding.pry
+    
+  #   @width ||= @metadata["width"]
+  #   @width
   # end
   
   def public_id
