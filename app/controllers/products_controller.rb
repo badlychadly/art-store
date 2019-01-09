@@ -15,9 +15,10 @@ class ProductsController < ApplicationController
             # product.picture has no file and has cache_storage = CarrierWave::Storage::File:
             # new_product.picture has a file = Cloudinary::CarrierWave::CloudinaryFile:
             binding.pry
-            width, height = product.picture.metadata['width'], product.picture.metadata['height']
+            # width, height = product.picture.metadata['width'], product.picture.metadata['height']
             new_product = Product.find_by(id: product.id)
-            render json: {product: new_product, width: width, height: height}, status: 201
+            # new_product.to_json(:include => :picture)
+            render json: new_product, :include => {:picture => {:only => [:width, :height, :cloud]}}, status: 201
         end
     end
 
@@ -38,10 +39,13 @@ class ProductsController < ApplicationController
         @product = Product.find_by(id: params[:id])
     end
 
-   
+#    p = Product.new(product_params)
+#    PictureUploader.new(attributes)
+#    Picture.new(cloud: product_params[:picture])
+#    self.build_picture(cloud: attr)
 
     def product_params
-        params.permit(:name, :price, :description, :img_url, :original, :prints, :picture)
+        params.permit(:name, :price, :description, :img_url, :original, :prints, :cloud)
         # params.require(:product).permit(:name, :price, :description, :img_url, :original, :prints, :picture)
     end
 

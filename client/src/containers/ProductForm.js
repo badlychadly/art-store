@@ -18,7 +18,7 @@ class ProductForm extends Component {
                 description: "",
                 img_url: "",
                 prints: false,
-                picture: null
+                picture: {cloud: null}
             },
             modal: true
         }
@@ -79,13 +79,14 @@ class ProductForm extends Component {
         let state = this.state
         let reader = new FileReader()
         let file = e.target.files[0];
+        debugger;
         
         // debugger;
         reader.onloadend = () => {
             this.setState({
                 ...state, 
                 previewUrl: reader.result,
-                productInfo: {...state.productInfo, picture: file}
+                productInfo: {...state.productInfo, picture: {cloud: file}}
             })
 
         }
