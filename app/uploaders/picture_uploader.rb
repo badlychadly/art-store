@@ -6,28 +6,14 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   cloudinary_transformation :image_metadata=>true
 
-  # TRY GIVING PICTURE_UPLOADER ATTRIBUTS IN DB OF WIDTH AND HEIGHT AND SEND FROM FRONT END
 
   version :standard do
     # process :width
   end
 
   
-
-  # def url
-  #   binding.pry
-  #   @metadata['url']
-  # end
-
-  # def width
-  #   binding.pry
-    
-  #   @width ||= @metadata["width"]
-  #   @width
-  # end
   
   def public_id
-    # binding.pry
     @public_id
   end 
 

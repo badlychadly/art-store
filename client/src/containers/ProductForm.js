@@ -79,9 +79,7 @@ class ProductForm extends Component {
         let state = this.state
         let reader = new FileReader()
         let file = e.target.files[0];
-        debugger;
         
-        // debugger;
         reader.onloadend = () => {
             this.setState({
                 ...state, 
@@ -90,7 +88,6 @@ class ProductForm extends Component {
             })
 
         }
-        // debugger;
         reader.readAsDataURL(file)
     };
 

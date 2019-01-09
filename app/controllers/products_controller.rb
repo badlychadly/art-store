@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
     # before_action :find_product, only: [:destroy, :update]
     before_action :find_product, only: [:destroy, :create, :update]
     # HANDLE WHEN USER TRIES TO MAKE REQUEST WITH AUTHENTICATION
-    # USE REDUX IN FRONT END TO AUTHENTICATE IF SESSION TOKEN IS REAL
     
 
     def index 
@@ -12,13 +11,10 @@ class ProductsController < ApplicationController
     def create
         product = Product.new(product_params)
         if product.save
-            # product.picture has no file and has cache_storage = CarrierWave::Storage::File:
-            # new_product.picture has a file = Cloudinary::CarrierWave::CloudinaryFile:
-            binding.pry
-            # width, height = product.picture.metadata['width'], product.picture.metadata['height']
-            new_product = Product.find_by(id: product.id)
-            # new_product.to_json(:include => :picture)
-            render json: new_product, :include => {:picture => {:only => [:width, :height, :cloud]}}, status: 201
+            # product.picture.cloud has no file and has cache_storage = CarrierWave::Storage::File:
+            # new_product.picture.cloud has a file = Cloudinary::CarrierWave::CloudinaryFile:
+            stored_product = Product.find_by(id: product.id)
+            render json: stored_product, :include => {:picture => {:only => [:width, :height, :cloud]}}, status: 201
         end
     end
 
@@ -39,10 +35,6 @@ class ProductsController < ApplicationController
         @product = Product.find_by(id: params[:id])
     end
 
-#    p = Product.new(product_params)
-#    PictureUploader.new(attributes)
-#    Picture.new(cloud: product_params[:picture])
-#    self.build_picture(cloud: attr)
 
     def product_params
         params.permit(:name, :price, :description, :img_url, :original, :prints, :cloud)

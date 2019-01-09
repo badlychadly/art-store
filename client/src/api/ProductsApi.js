@@ -16,7 +16,6 @@ class ProductsApi {
         // debugger;
         // const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders())
         let data = new FormData()
-        debugger;
         data.append('name', formData.name)
         data.append('price', formData.price)
         data.append('description', formData.description)
@@ -30,7 +29,6 @@ class ProductsApi {
             body: data
         })
         .then(resp => {
-            debugger;
             return resp.json()
         })
     }

@@ -2,16 +2,14 @@ class Picture < ApplicationRecord
     mount_uploader :cloud, PictureUploader
     belongs_to :product 
 
-    # after_initialize :update_dimensions 
+    after_save :update_dimensions,
+        if: Proc.new {|picture| picture.width.nil? && picture.height.nil?} 
 
-def update_dimensions 
-    # binding.pry
-    if !!self.cloud && !!self.cloud.metadata
-        # self.width = self.cloud.metadata["width"] 
-        # self.height = self.cloud.metadata["height"] 
-        self.update_attributes(width: self.cloud.metadata["width"], height: self.cloud.metadata["height"] )
-        self
-    # TODO: Update model entity 
-  end 
-end
+    def update_dimensions 
+        binding.pry
+        if !!self.cloud && !!self.cloud.metadata
+            self.update_attributes(width: self.cloud.metadata["width"], height: self.cloud.metadata["height"] )
+            self
+        end 
+    end
 end
