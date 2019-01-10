@@ -13,7 +13,6 @@ class ProductsApi {
 
 
     static createProduct(formData) {
-        // debugger;
         // const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders())
         let data = new FormData()
         data.append('name', formData.name)

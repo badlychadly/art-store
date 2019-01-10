@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     
 
     def index 
-        render json: Product.all
+        render json: Product.all, :include => {:picture => {:only => [:width, :height, :cloud]}}
     end
 
     def create
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
 
     def update
         @product.update_attributes(product_params)
-        render json: @product, status: 202
+            render json: @product, :include => {:picture => {:only => [:width, :height, :cloud]}}, status: 202
     end
 
     def destroy

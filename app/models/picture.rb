@@ -6,7 +6,6 @@ class Picture < ApplicationRecord
         if: Proc.new {|picture| picture.width.nil? && picture.height.nil?} 
 
     def update_dimensions 
-        binding.pry
         if !!self.cloud && !!self.cloud.metadata
             self.update_attributes(width: self.cloud.metadata["width"], height: self.cloud.metadata["height"] )
             self

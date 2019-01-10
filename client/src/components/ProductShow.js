@@ -30,6 +30,23 @@ class ProductShow extends Component {
           </div>
         )
     }
+
+
+    imageContainer = () => {
+        let classname
+        let width = 0
+        let height = 0
+        if (!!this.product.picture) {
+            width = parseInt(this.product.picture.width)
+            height = parseInt(this.product.picture.height)
+        }
+        classname = (height - width) > 50 ? "imageControl" : ""
+        return (
+            <Container className={classname}>
+                <ProductCard product={this.product} />
+            </Container>
+        )
+    }
     
     
         render() {
@@ -49,18 +66,18 @@ class ProductShow extends Component {
                     <Row className="mx-0">
                         <Col sm="8">
                         {/* CONDITIONAL WIDTH ON CONTAINER */}
-                        <div className="imageControl">
+                        {/* <div className="imageControl">
                         <ProductCard product={this.product} />
                             
-                        </div>
-                        {/* <Container className="w-75">
+                        </div> */}
+                        {/* <Container className="imageControl">
                                 <ProductCard product={this.product} />
                         </Container> */}
                             {/* <div className="px-1 pb-1"> */}
 
                             {/* </div> */}
+                            {this.imageContainer()}
                         
-                            {/* <img src={product.img_url} alt={product.name}/> */}
                         </Col>
                         <Col sm="4">
                         

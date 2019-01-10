@@ -24,7 +24,6 @@ export const addProduct = formData => {
     // debugger
     return dispatch => {
         return ProductsApi.createProduct(formData).then(product => {
-            debugger;
             dispatch({type: "ADD_PRODUCT", product})
         })
         .catch(error => console.log(error))

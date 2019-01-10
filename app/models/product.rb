@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-    has_one :picture
+    has_one :picture, dependent: :destroy
 
     # accepts_nested_attributes_for :picture
     # serialize :picture, JSON

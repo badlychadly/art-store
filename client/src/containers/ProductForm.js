@@ -29,9 +29,11 @@ class ProductForm extends Component {
     checkForProduct = () => {
         // const { name, price, description, img_url } = this.props.product
         const { product } = this.props
-        if (!!this.props.product) {
+        let previewUrl 
+        if (!!product) {
+          previewUrl  = !!product.picture ? product.picture.cloud.url : product.img_url
             this.setState({
-                previewUrl: product.picture.url,
+                previewUrl: previewUrl,
                 productInfo: product
                 // name: name,
                 // price: price
@@ -92,7 +94,7 @@ class ProductForm extends Component {
     };
 
     previewPicture = (file) => {
-       return !!this.state.productInfo.picture &&
+       return !!this.state.previewUrl &&
         (
         <>
         <FormText color="primary">
@@ -152,15 +154,6 @@ class ProductForm extends Component {
                                     onChange={this.handleFileUpload} 
                                 /> 
                                 {this.previewPicture()}
-                                {/* create method to display preview info */}
-                                {/* <FormText color="muted">
-                                Preview
-                                </FormText>
-                                { !!this.state.productInfo.picture &&
-                                    // <CardImg width="100px" src={this.state.previewUrl} alt="pic" />
-                                    <img className="mt-1" width="50%" src={this.state.previewUrl} alt="pic"/>
-
-                                } */}
 
                             </Col>
                             </FormGroup>
