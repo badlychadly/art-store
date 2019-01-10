@@ -34,13 +34,24 @@ class ProductShow extends Component {
 
     imageContainer = () => {
         let classname
+        let total = 0
         let width = 0
         let height = 0
         if (!!this.product.picture) {
             width = parseInt(this.product.picture.width)
             height = parseInt(this.product.picture.height)
+            total = (height - width)
+            // 503 140
         }
-        classname = (height - width) > 50 ? "imageControl" : ""
+        debugger;
+        if (total < 100) {
+            classname = ""
+        } else if (((total > 100) && (total < 400))) {
+            classname = "imageControl-md"
+        } else {
+            classname = "imageControl"
+        }
+        // classname = (height - width) > 50 ? "imageControl" : ""
         return (
             <Container className={classname}>
                 <ProductCard product={this.product} />

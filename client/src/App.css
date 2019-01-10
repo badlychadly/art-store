@@ -66,3 +66,9 @@
       max-width: 70%;
   }
 }
+
+@media (min-width: 1200px) {
+  .imageControl-md {
+      max-width: 85%;
+  }
+}
