@@ -24,7 +24,7 @@ class ProductShow extends Component {
                 state: {isEdit: true}
             }} >edit Content</Button>
             <Link to={{pathname: '/', state: {confirmDelete: true}}}> 
-              <Button size="sm" hidden={!this.props.isValidated} onClick={() => this.props.deleteProduct(this.product)} color="danger">danger</Button>
+              <Button size="sm" hidden={!this.props.isValidated} onClick={() => this.props.deleteProduct(this.product)} color="danger">Delete</Button>
                             
             </Link>
           </div>
@@ -43,7 +43,7 @@ class ProductShow extends Component {
             total = (height - width)
             // 503 140
         }
-        debugger;
+        // debugger;
         if (total < 100) {
             classname = ""
         } else if (((total > 100) && (total < 400))) {
@@ -71,7 +71,10 @@ class ProductShow extends Component {
             return (
             <div>
                 <Container>
+                    {/* <span> */}
                 <h3 className="text-white">{this.product.name}</h3>
+                {this.viewButtons()}
+                    {/* </span> */}
                 {/* <Container className="m-0"> */}
                 {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
                     <Row className="mx-0">
@@ -104,7 +107,7 @@ class ProductShow extends Component {
                             {/* </ListGroup> */}
                             
                             {/* <Link to='/'>  */}
-                            {this.viewButtons()}
+                            {/* {this.viewButtons()} */}
                             
                                 {/* {deleteButton()} */}
                             {/* </Link> */}

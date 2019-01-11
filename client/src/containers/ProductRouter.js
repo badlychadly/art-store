@@ -9,6 +9,7 @@ import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
+import AboutPage from '../components/AboutPage'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
 
 
@@ -51,6 +52,8 @@ class ProductRouter extends Component {
                     {/* <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} {...routerProps} />)} /> */}
 
                     <ShowProductRoute path={`/products/:productId`} component={ProductShow} products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} />
+
+                    <Route path="/about" component={AboutPage} />
 
                     <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
