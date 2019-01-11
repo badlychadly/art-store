@@ -46,7 +46,7 @@ class ProductShow extends Component {
         // debugger;
         if (total < 100) {
             classname = ""
-        } else if (((total > 100) && (total < 400))) {
+        } else if (((total > 100) && (total < 200))) {
             classname = "imageControl-md"
         } else {
             classname = "imageControl"
