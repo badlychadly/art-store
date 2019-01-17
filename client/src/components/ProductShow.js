@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Route, Link, Redirect } from 'react-router-dom'
 import { Button, Row, Col, Container  } from 'reactstrap';
 import ProductCard from './ProductCard'
+import ImageControl from './ImageControl'
 
 import ProductForm from '../containers/ProductForm'
 import InfoTabs from './InfoTabs'
-import { PrivateRoute, AdminLoginRoute } from './CustomRoutes'
+// import { PrivateRoute, AdminLoginRoute } from './CustomRoutes'
 
 
 class ProductShow extends Component {
@@ -32,42 +33,10 @@ class ProductShow extends Component {
     }
 
 
-    imageContainer = () => {
-        let classname
-        let total = 0
-        let width = 0
-        let height = 0
-        if (!!this.product.picture) {
-            width = parseInt(this.product.picture.width)
-            height = parseInt(this.product.picture.height)
-            total = (height - width)
-            // 503 140
-        }
-        // debugger;
-        if (total < 100) {
-            classname = ""
-        } else if (((total > 100) && (total < 200))) {
-            classname = "imageControl-md"
-        } else {
-            classname = "imageControl"
-        }
-        // classname = (height - width) > 50 ? "imageControl" : ""
-        return (
-            <Container className={classname}>
-                <ProductCard product={this.product} />
-            </Container>
-        )
-    }
     
     
         render() {
             this.product = this.props.product
-            // debugger;
-            // this.product = this.props.products.find(({ id }) => {
-            //     // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
-            //     // debugger;
-            //     return String(id) === this.props.match.params.productId
-            // })
             return (
             <div>
                 <Container>
@@ -79,18 +48,10 @@ class ProductShow extends Component {
                 {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
                     <Row className="mx-0">
                         <Col sm="8">
-                        {/* CONDITIONAL WIDTH ON CONTAINER */}
-                        {/* <div className="imageControl">
-                        <ProductCard product={this.product} />
-                            
-                        </div> */}
-                        {/* <Container className="imageControl">
-                                <ProductCard product={this.product} />
-                        </Container> */}
-                            {/* <div className="px-1 pb-1"> */}
 
-                            {/* </div> */}
-                            {this.imageContainer()}
+                            <ImageControl picture={this.product.picture}>
+                                <ProductCard product={this.product}/>
+                            </ImageControl>
                         
                         </Col>
                         <Col sm="4">
