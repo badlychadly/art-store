@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import { Link } from 'react-router-dom'
 import { Col, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, 
     ModalBody, ModalFooter } from 'reactstrap'
+import LoadingIcon from '../components/LoadingIcon'
 import '../components/CustomModal.css'
 import { addProduct, updateProduct } from '../actions/products'
 
@@ -11,6 +12,7 @@ class ProductForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            upLoading: false,
             previewUrl: '',
             productInfo: {
                 name: "",
@@ -55,6 +57,9 @@ class ProductForm extends Component {
 
     handleOnSubmit = event => {
         const { location } = this.props
+        this.setState({
+            upLoading: true
+        })
         event.preventDefault()
         !!this.props.product ? this.props.updateProduct(this.state.productInfo) : this.props.addProduct(this.state.productInfo)
         // console.log(this.props.location)
@@ -119,13 +124,13 @@ class ProductForm extends Component {
                             <FormGroup row>
                                 <Label for="name" sm={2} className="text-dark">Name</Label>
                                 <Col sm={10}>
-                                    <Input type="text" name="name" onChange={this.handleOnChange} value={this.state.productInfo.name} id="name" placeholder="with a placeholder" />
+                                    <Input type="text" name="name" onChange={this.handleOnChange} value={this.state.productInfo.name} id="name" placeholder="with a placeholder" required />
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
                                 <Label for="price" sm={2} className="text-dark">Price</Label>
                                 <Col sm={10}>
-                                    <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.productInfo.price} id="price" placeholder="price placeholder" />
+                                    <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.productInfo.price} id="price" placeholder="price placeholder" required />
                                 </Col>
                             </FormGroup>
                             
@@ -133,7 +138,7 @@ class ProductForm extends Component {
                             <FormGroup row>
                             <Label for="description" sm={2} className="text-dark">Description</Label>
                             <Col sm={10}>
-                                <Input type="textarea" name="description" onChange={this.handleOnChange} value={this.state.productInfo.description} id="description" />
+                                <Input type="textarea" name="description" onChange={this.handleOnChange} value={this.state.productInfo.description} id="description" required />
                             </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -151,7 +156,8 @@ class ProductForm extends Component {
                                     id="fileUpload" 
                                     accept="image/*"  
                                     ref={fileInputEl => (this.fileInputEl = fileInputEl) }
-                                    onChange={this.handleFileUpload} 
+                                    onChange={this.handleFileUpload}
+                                    required 
                                 /> 
                                 {this.previewPicture()}
 
@@ -167,11 +173,23 @@ class ProductForm extends Component {
                     
                         </ModalBody>
                         <ModalFooter>
-                        <FormGroup check row>
-                    <Col sm={{ size: 10, offset: 2 }}>
+                        
+                        {/* <FormGroup check row> */}
+                    {/* <Col sm={{ size: 10, offset: 2 }}> */}
+
+                    {/* TRY DISABLING SUBMIT BUTTON ON SUBMIT */}
+                    {this.state.upLoading ? (
+                        <>
+                            <p className="text-primary mb-0">Uploading...</p>
+                            <Button color="primary"><LoadingIcon/></Button>
+                        </>
+                    ) : (
                         <Button color="primary">Submit</Button>
-                    </Col>
-                    </FormGroup>                           
+                        
+                    )
+                    }
+                    {/* </Col> */}
+                    {/* </FormGroup>                            */}
                      <Button color="secondary" onClick={() => this.props.history.goBack()}>Cancel</Button>
                         </ModalFooter>
                     </Form>
