@@ -10,8 +10,6 @@ import '../Products.css'
 
 const ListProducts = (props) => {
     
-
-
       const listProducts = products => {
         return (
             products.map(product => 
@@ -21,17 +19,8 @@ const ListProducts = (props) => {
     ))
       }
 
-      const renderMessages = () => {
-          if ((!!props.location.state) || props.sendMessage) {
-             return <Messages confirmDelete={(!!props.location.state && props.location.state.confirmDelete)} sendError={(!!props.location.state && props.location.state.error)} history={props.history} resetMessage={props.resetMessage} sendMessage={props.sendMessage} location={props.location} />
-          }
-      }
-
-
-    //   debugger;
         return (
             <div>
-            {renderMessages()}
 
                 <CardColumns className="ListProducts">
                     {listProducts(props.products)}

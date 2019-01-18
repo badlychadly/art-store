@@ -10,6 +10,7 @@ import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
 import AboutPage from '../components/AboutPage'
+import Messages from '../components/messages/Messages'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
 
 
@@ -23,11 +24,16 @@ class ProductRouter extends Component {
 
 
     componentDidMount() {
- 
         if (this.props.logged_in && !this.props.products.length ) {
             return this.props.verifyAdmin().then(this.props.getProducts)
         } else {
             return this.props.getProducts()
+        }
+    }
+
+    renderMessages = () => {
+        if ((!!this.props.location.state) || this.props.sendMessage) {
+           return <Messages confirmDelete={(!!this.props.location.state && this.props.location.state.confirmDelete)} sendError={(!!this.props.location.state && this.props.location.state.error)} history={this.props.history} resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} location={this.props.location} />
         }
     }
 
@@ -39,6 +45,8 @@ class ProductRouter extends Component {
         return this.props.products.length ? (
             <div>
             <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
+            {this.renderMessages()}
+            
             
                 
                 {/* <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   */}
