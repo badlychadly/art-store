@@ -181,7 +181,7 @@ class ProductForm extends Component {
                     {this.state.upLoading ? (
                         <>
                             <p className="text-primary mb-0">Uploading...</p>
-                            <Button color="primary"><LoadingIcon/></Button>
+                            <Button color="primary" disabled><LoadingIcon/></Button>
                         </>
                     ) : (
                         <Button color="primary">Submit</Button>
