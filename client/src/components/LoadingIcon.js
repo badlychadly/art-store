@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner'
         color="#ffffff"
         height="40"	
         width="20"
-     />
+        />
     );
 
     export default LoadingIcon;

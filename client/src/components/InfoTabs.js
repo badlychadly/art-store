@@ -62,7 +62,6 @@ export default class InfoTabs extends React.Component {
             </Row>
           </TabPane>
         </TabContent>
-        {/* {this.viewButtons()} */}
       </div>
     );
   }

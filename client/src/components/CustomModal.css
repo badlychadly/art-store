@@ -4,3 +4,16 @@
   .modal-content {
     width: 100%; /* = 100% of the .modal-dialog block */
   }
+
+  /* .myContainer {
+    border: 2px solid red;
+    height: 100vh;
+    overflow: hidden;
+    resize: both;
+    width: 100%;
+  }
+  img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  } */

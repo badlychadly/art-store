@@ -11,6 +11,7 @@ import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
 import AboutPage from '../components/AboutPage'
 import Messages from '../components/messages/Messages'
+import Loader from 'react-loader-spinner'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
 
 
@@ -44,12 +45,11 @@ class ProductRouter extends Component {
     render() {
         return this.props.products.length ? (
             <div>
-            <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
-            {this.renderMessages()}
+                <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
+                {this.renderMessages()}
             
             
                 
-                {/* <Route exact path="/admin/login" render={routerProps => this.props.logged_in ? (<Redirect to="/"/> ) : (<AdminForm logged_in={this.props.logged_in} {...routerProps} />)} />   */}
 
                 <AdminLoginRoute path="/admin/login" logged_in={this.props.logged_in} component={AdminForm} /> 
 
@@ -57,7 +57,6 @@ class ProductRouter extends Component {
                 <Switch>
                     <PrivateRoute path="/products/new" newProduct={this.props.newProduct} isValidated={this.props.isValidated} logged_in={this.props.logged_in} component={ProductForm} />
 
-                    {/* <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} {...routerProps} />)} /> */}
 
                     <ShowProductRoute path={`/products/:productId`} component={ProductShow} products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} />
 
@@ -67,12 +66,15 @@ class ProductRouter extends Component {
 
                 </Switch>
             </div>
-        ) : <h3 className="text-white">Loading content...</h3>
+        ) : (
+        <div style={{marginTop: '45vh' }}>
+            <Loader type="Oval" color="#ffffff" height="100" width="100"/>
+        </div>
+        )
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state)
     return ({
         products: state.products.products,
         newProduct: state.products.newProduct,

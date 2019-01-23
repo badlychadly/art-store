@@ -11,7 +11,7 @@ import InfoTabs from './InfoTabs'
 
 
 class ProductShow extends Component {
-    // MOVE MESSAGES TO PRODUCTROUTER   
+    
     
 
     componentDidMount() {
@@ -27,40 +27,21 @@ class ProductShow extends Component {
             return (
             <div>
                 <Container>
-                    {/* <span> */}
-                <h3 className="text-white">{this.product.name}</h3>
-                <AuthButtons isValidated={this.props.isValidated} deleteProduct={this.props.deleteProduct} product={this.product} />
-                    {/* </span> */}
-                {/* <Container className="m-0"> */}
-                {/* <Button size="sm" tag={Link} to={`/products/${this.product.id + 1}`}> > </Button> */}
+                    <h3 className="text-white">{this.product.name}</h3>
+                    <AuthButtons isValidated={this.props.isValidated} deleteProduct={this.props.deleteProduct} product={this.product} />
                     <Row className="mx-0">
                         <Col sm="8">
-
                             <ImageControl picture={this.product.picture}>
                                 <ProductCard product={this.product}/>
                             </ImageControl>
-                        
                         </Col>
                         <Col sm="4">
-                        
-    
-                        <InfoTabs product={this.product} logged_in={this.props.logged_in} deleteProduct={this.props.deleteProduct} />
-                        
-    
-    
-    
+                            <InfoTabs product={this.product} logged_in={this.props.logged_in} deleteProduct={this.props.deleteProduct} />
+
                             {/* <PrivateRoute path="/products/new" product={this.product} logged_in={this.props.logged_in} component={ProductForm} /> */}
                                 
-                                <Route path={`/products/:productId/edit`} render={routerProps => this.props.logged_in ? <ProductForm product={this.product} {...routerProps}/>: <Redirect to={`/products/${this.product.id}`} />} />
-                            {/* </ListGroup> */}
-                            
-                            {/* <Link to='/'>  */}
-                            {/* {this.viewButtons()} */}
-                            
-                                {/* {deleteButton()} */}
-                            {/* </Link> */}
+                            <Route path={`/products/:productId/edit`} render={routerProps => this.props.logged_in ? <ProductForm product={this.product} {...routerProps}/>: <Redirect to={`/products/${this.product.id}`} />} />
                         </Col>
-    
                     </Row>
                     {/* <Route path={`/products/:productId`} render={routerProps => (<ProductShow products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} {...routerProps} />)} /> */}
     
