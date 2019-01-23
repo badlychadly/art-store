@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
-    # before_action :find_product, only: [:destroy, :update]
     before_action :find_product, only: [:destroy, :create, :update]
-    # HANDLE WHEN USER TRIES TO MAKE REQUEST WITH AUTHENTICATION
     
 
     def index 

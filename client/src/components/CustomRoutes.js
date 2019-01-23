@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
-// ADD CUSTOM ROUTE FOR SUCCESSFUL LOGIN
 
 
 export function PrivateRoute({ component: Component, newProduct, isValidated, logged_in, ...rest }) {
@@ -16,21 +15,15 @@ export function PrivateRoute({ component: Component, newProduct, isValidated, lo
           } else {
             return <Redirect to={{
               pathname: '/',
-              state: {
-                from: props.location, error: true
-              }
-          }} />
+              state: { from: props.location, error: true }
+            }} />
           }
-      
-
-        }
-           
-              
-          
+          }
+            
         }
       />
-    );
-  }
+  );
+}
 
 
   export function AdminLoginRoute({ component: Component, logged_in, ...rest}) {
@@ -54,17 +47,8 @@ export function PrivateRoute({ component: Component, newProduct, isValidated, lo
       // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
       // debugger;
       return String(id) === computedMatch.params.productId
-  })
-  // debugger;
-
-//   let nextProduct = products.find(({ id }) => {
-//     // WHEN URL CHANGES MATCH.PARAMS.PRODUCTID IS "NEW" INSTEAD OF PRODUCT.ID
-//     // debugger;
-//     return String(id) === computedMatch.params.productId
-// })
-
+      })
     return (
       <Route path={path} {...rest} render={routerProps => (<Component product={product} products={products} newProduct={newProduct} resetNewProduct={resetNewProduct} deleteProduct={deleteProduct} logged_in={logged_in} isValidated={isValidated} {...routerProps} />)} />
-      
     )
   }

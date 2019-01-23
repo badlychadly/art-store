@@ -21,15 +21,8 @@ class AdminForm extends Component {
         modal: true,
         invalid: false
     };
-
-    // this.toggle = this.toggle.bind(this);
   }
 
-//   toggle() {
-//     this.setState({
-//       modal: !this.state.modal
-//     });
-//   }
 
 
 
@@ -55,8 +48,7 @@ handleInvalid = () => {
 
 
   render() {
-    // console.log(this.props)
-    // debugger;
+ 
     return (
       <div>
         {/* <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button> */}

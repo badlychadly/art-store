@@ -31,7 +31,6 @@ export default class NavbarMain extends Component {
   }
 
   handleLogOut = event => {
-    // debugger
     this.props.logOutUser()
   }
   

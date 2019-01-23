@@ -14,10 +14,7 @@ import Messages from '../components/messages/Messages'
 import Loader from 'react-loader-spinner'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
 
-
 import '../Products.css'
-
-
 
 
 class ProductRouter extends Component {
@@ -40,7 +37,6 @@ class ProductRouter extends Component {
 
 
        
-
 
     render() {
         return this.props.products.length ? (

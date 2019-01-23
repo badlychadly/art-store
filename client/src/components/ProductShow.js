@@ -11,17 +11,12 @@ import InfoTabs from './InfoTabs'
 
 
 class ProductShow extends Component {
-    
-    
 
     componentDidMount() {
         !!this.props.newProduct.id && this.props.resetNewProduct() 
     }
 
 
-
-    
-    
         render() {
             this.product = this.props.product
             return (

@@ -113,8 +113,7 @@ class ProductForm extends Component {
     }
 
     render() {
-        debugger;
-        // console.log(this)
+
         return (
             <div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -177,7 +176,6 @@ class ProductForm extends Component {
                         {/* <FormGroup check row> */}
                     {/* <Col sm={{ size: 10, offset: 2 }}> */}
 
-                    {/* TRY DISABLING SUBMIT BUTTON ON SUBMIT */}
                     {this.state.upLoading ? (
                         <>
                             <p className="text-primary mb-0">Uploading...</p>
