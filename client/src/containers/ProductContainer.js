@@ -17,7 +17,7 @@ import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/C
 import '../Products.css'
 
 
-class ProductRouter extends Component {
+class ProductContainer extends Component {
 
 
 
@@ -80,4 +80,4 @@ const mapStateToProps = (state, ownProps) => {
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin })(ProductRouter);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin })(ProductContainer);

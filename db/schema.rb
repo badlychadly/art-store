@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2019_01_08_203310) do
   create_table "admins", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.text "about"
+    t.boolean "signed_in", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_203310) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "price"
+    t.decimal "price"
     t.string "description"
     t.string "img_url"
     t.boolean "original", default: true
