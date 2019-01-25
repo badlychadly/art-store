@@ -48,6 +48,9 @@ export default class NavbarMain extends Component {
               </NavItem>
             }
               <NavItem>
+                <NavLink tag={RouterNavLink} to="/about">About</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>

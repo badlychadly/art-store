@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import { getProducts, deleteProduct, resetNewProduct } from '../actions/products'
 import { logOutUser, resetMessage, verifyAdmin } from '../actions/session'
+import { getInfo } from '../actions/aboutInfo'
 import ListProducts from '../components/ListProducts'
 import ProductShow from '../components/ProductShow'
 import AdminForm from './AdminForm'
@@ -56,7 +57,7 @@ class ProductContainer extends Component {
 
                     <ShowProductRoute path={`/products/:productId`} component={ProductShow} products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} />
 
-                    <Route path="/about" component={AboutPage} />
+                    <Route path="/about" render={routerProps => <AboutPage about={this.props.about} getInfo={this.props.getInfo} {...routerProps} />} />
 
                     <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
@@ -76,8 +77,9 @@ const mapStateToProps = (state, ownProps) => {
         newProduct: state.products.newProduct,
         logged_in: state.session.hasToken,
         isValidated: state.session.isValidated,
-        sendMessage: state.session.sendMessage
+        sendMessage: state.session.sendMessage,
+        about: state.aboutInfo.about
     })
 }
 
-export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin })(ProductContainer);
+export default connect(mapStateToProps, { getProducts, deleteProduct, logOutUser, resetMessage, resetNewProduct, verifyAdmin, getInfo })(ProductContainer);

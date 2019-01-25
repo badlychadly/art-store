@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Alert } from 'reactstrap';
 
-
+// FIX MESSAGES REPLACE EACHOTHER WHEN CALLED BACK TO BACK
 class Messages extends Component {
   
       state = {
