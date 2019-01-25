@@ -42,6 +42,15 @@ class SessionApi {
     } 
 
 
+    static logout() {
+      const headers = this.requestHeaders()
+      return fetch('http://10.0.0.99:3001/logout', {
+        method: 'POST',
+        headers: headers
+      })
+    }
+
+
 
     static verifyAdmin() {
       const headers = this.requestHeaders()

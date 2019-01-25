@@ -23,9 +23,15 @@ export function loginSuccess() {
   }
 
 
-  export function logOutUser() {  
-    sessionStorage.removeItem('jwt');
-    return {type: "LOG_OUT"}
+  export function logOutUser() {
+    return dispatch => {
+      return sessionApi.logout().then(resp => resp.json())
+      .then(data => {
+        sessionStorage.removeItem('jwt');
+        return dispatch({type: "LOG_OUT"})
+
+      })
+    }  
   }
 
   export function verifyAdmin() {

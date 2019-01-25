@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
       admin = Admin.find_by(email: auth_params[:email])
       if !!admin && admin.authenticate(auth_params[:password])
         jwt = Auth.issue({admin: admin.id})
+        admin.update(signed_in: true)
         render json: {jwt: jwt}
       else
         render json: {status: 401, message: "incorrect credentials"}
@@ -20,6 +21,12 @@ class SessionsController < ApplicationController
       authenticate
     end
     # binding.pry
+  end
+
+  def destroy
+    # binding.pry
+    current_user.update(signed_in: false)
+    render json: {message: "successful"}, status: 200
   end
       
     
