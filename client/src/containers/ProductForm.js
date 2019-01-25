@@ -129,7 +129,10 @@ class ProductForm extends Component {
                             <FormGroup row>
                                 <Label for="price" sm={2} className="text-dark">Price</Label>
                                 <Col sm={10}>
-                                    <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.productInfo.price} id="price" placeholder="price placeholder" required />
+                                    <Input type="text" name="price" onChange={this.handleOnChange} value={this.state.productInfo.price} id="price" placeholder="price" pattern="[0-9+(.)]+" required />
+                                    <FormText>
+                                        price is a number, no symbols please
+                                    </FormText>
                                 </Col>
                             </FormGroup>
                             

@@ -16,7 +16,7 @@ class ProductsApi {
         // const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders())
         let data = new FormData()
         data.append('name', formData.name)
-        data.append('price', formData.price)
+        data.append('price', parseFloat(formData.price))
         data.append('description', formData.description)
         data.append('img_url', formData.img_url)
         data.append('cloud', formData.picture.cloud)

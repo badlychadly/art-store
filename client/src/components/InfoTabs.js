@@ -50,7 +50,7 @@ export default class InfoTabs extends React.Component {
             <Row>
               <Col sm="12">
                 <h5>{this.props.product.name}</h5>
-                <p>Price: {this.props.product.price}</p>
+                <p>Price: {`$${this.props.product.price}`}</p>
               </Col>
             </Row>
           </TabPane>
