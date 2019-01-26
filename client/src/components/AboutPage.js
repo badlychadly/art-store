@@ -10,7 +10,7 @@ class AboutPage extends Component {
 
 
     componentDidMount() {
-
+        this.props.getInfo()
     }
 
 
