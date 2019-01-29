@@ -9,10 +9,11 @@ export const getInfo = () => {
 }
 
 export const updateInfo = (info) => {
+    const headers = Object.assign({'Content-Type': 'application/json'}, {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`})
     return dispatch => {
         return fetch('http://10.0.0.99:3001/about', {
             method: "PUT",
-            headers: {'Content-Type': 'application/json'},
+            headers: headers,
             body: JSON.stringify(info)
         })
         .then(resp => resp.json())

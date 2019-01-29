@@ -3,6 +3,8 @@ import {Col, Row, Form, Input, Container, Button, Modal, ModalHeader, ModalBody,
 
 
 class AboutPage extends Component {
+    // ADD LOADING ICON AND RUN TOGGLE ONLY AFTER API REQUEST
+    // AUTO ROWS AND COLUMNS FOR TEXTAREA INPUT
 
     state = {
         about: "",
@@ -24,6 +26,7 @@ class AboutPage extends Component {
     handleSubmit = event => {
         event.preventDefault()
         this.props.updateInfo(this.state)
+        this.toggle()
     }
 
 
@@ -45,7 +48,7 @@ class AboutPage extends Component {
                     <h3 className="text-white align-self-center">About Artist</h3>
                     </Col>
                     {/* <Col sm="2" className="m-auto"> */}
-                <Button size="sm" color="warning" onClick={this.toggle}>Edit Content</Button>
+                <Button size="sm" color="warning" hidden={!this.props.isValidated} onClick={this.toggle}>Edit Content</Button>
                     {/* </Col> */}
                 </Row>
                 <Col sm="8" className="bg-white mx-auto">
@@ -55,19 +58,19 @@ class AboutPage extends Component {
                 
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                    <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
+                    <ModalBody>
 
                         <Col className="text-dark" sm={10}>
                             <Input type="textarea" name="text" onChange={this.handleChange} id="exampleText" value={this.state.about} cols="100" rows="60" />
                         </Col>
                         {/* <input type="submit" name="submit" value="Add Changes"/> */}
-                        </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                        <Button color="primary">Do Something</Button>{' '}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
+                        </Form>
                     </Modal>
                
             </Container>

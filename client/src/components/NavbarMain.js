@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
   import { NavLink as RouterNavLink} from 'react-router-dom'
+  // TURN DROPDOWN INTO A ADMIN DASHBOARD
   
   
 export default class NavbarMain extends Component {
@@ -38,7 +39,7 @@ export default class NavbarMain extends Component {
     return (
       <div>
         <Navbar className="NavbarMain navbar-dark" light expand="md">
-          <NavbarBrand tag={RouterNavLink} to="/">reactstrap</NavbarBrand>
+          <NavbarBrand tag={RouterNavLink} to="/">Art-Store</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -51,11 +52,12 @@ export default class NavbarMain extends Component {
                 <NavLink tag={RouterNavLink} to="/about">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="https://github.com/reactstrap/reactstrap">Contact</NavLink>
               </NavItem>
+              { this.props.logged_in &&
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  Admin
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
@@ -65,13 +67,12 @@ export default class NavbarMain extends Component {
                     Option 2
                   </DropdownItem>
                   <DropdownItem divider />
-                  { this.props.logged_in &&
                   <DropdownItem onClick={this.handleLogOut}>
                     Logout
                   </DropdownItem>
-                  }
                 </DropdownMenu>
               </UncontrolledDropdown>
+              }
             </Nav>
           </Collapse>
         </Navbar>
