@@ -6,7 +6,8 @@ export default (state = {
 action) => {
     switch (action.type) {
         case "GET_ABOUT_SUCCESS":
-        debugger;
+            return action.about
+        case "UPDATE_ABOUT_SUCCESS":
             return action.about
     
         default:

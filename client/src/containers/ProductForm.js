@@ -159,7 +159,6 @@ class ProductForm extends Component {
                                     accept="image/*"  
                                     ref={fileInputEl => (this.fileInputEl = fileInputEl) }
                                     onChange={this.handleFileUpload}
-                                    required 
                                 /> 
                                 {this.previewPicture()}
 

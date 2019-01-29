@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/logout', to: "sessions#destroy"
   
   get '/about', to: "admin_info#show"
-  post '/about', to: "admin_info#update"
+  put '/about', to: "admin_info#update"
 
   get '/verify_admin', to: "sessions#verify"
 
