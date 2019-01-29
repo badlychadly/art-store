@@ -1,14 +1,13 @@
 class AdminInfoController < ApplicationController
+    before_action :authenticate, only: [:update]
 
     def show
         admin = Admin.first
-        # binding.pry
         render json: admin, only: [:about], status: 200
     end
 
     def update
         admin = Admin.first
-        # binding.pry
         admin.update(admin_params)
         render json: admin, only: [:about], status: 200
     end

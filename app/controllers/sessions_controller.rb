@@ -20,11 +20,9 @@ class SessionsController < ApplicationController
     else 
       authenticate
     end
-    # binding.pry
   end
 
   def destroy
-    # binding.pry
     current_user.update(signed_in: false)
     render json: {message: "successful"}, status: 200
   end
