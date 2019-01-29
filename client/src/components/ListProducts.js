@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { CardColumns } from 'reactstrap';
 
+import JumbotronGreet from '../components/JumbotronGreet'
 import ProductCard from '../components/ProductCard'
 import '../Products.css'
 
@@ -20,6 +21,8 @@ const ListProducts = (props) => {
 
         return (
             <div>
+                <JumbotronGreet/>
+                
 
                 <CardColumns className="ListProducts">
                     {listProducts(props.products)}

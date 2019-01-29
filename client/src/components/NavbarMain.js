@@ -52,7 +52,7 @@ export default class NavbarMain extends Component {
                 <NavLink tag={RouterNavLink} to="/about">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Contact</NavLink>
+                <NavLink tag={RouterNavLink} to="/contact" >Contact</NavLink>
               </NavItem>
               { this.props.logged_in &&
               <UncontrolledDropdown nav inNavbar>

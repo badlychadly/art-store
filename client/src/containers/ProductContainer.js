@@ -11,7 +11,7 @@ import AdminForm from './AdminForm'
 import ProductForm from './ProductForm'
 import NavbarMain from '../components/NavbarMain'
 import AboutPage from '../components/AboutPage'
-import JumbotronGreet from '../components/JumbotronGreet'
+import ContactPage from '../components/ContactPage'
 import Messages from '../components/messages/Messages'
 import Loader from 'react-loader-spinner'
 import { PrivateRoute, AdminLoginRoute, ShowProductRoute } from '../components/CustomRoutes'
@@ -48,7 +48,6 @@ class ProductContainer extends Component {
                 <NavbarMain logOutUser={this.props.logOutUser} logged_in={this.props.logged_in} />
                 {this.renderMessages()}
 
-                <JumbotronGreet/>
             
             
 
@@ -62,6 +61,8 @@ class ProductContainer extends Component {
                     <ShowProductRoute path={`/products/:productId`} component={ProductShow} products={this.props.products} newProduct={this.props.newProduct} resetNewProduct={this.props.resetNewProduct} deleteProduct={this.props.deleteProduct} logged_in={this.props.logged_in} isValidated={this.props.isValidated} />
 
                     <Route path="/about" render={routerProps => <AboutPage about={this.props.about} getInfo={this.props.getInfo} updateInfo={this.props.updateInfo} isValidated={this.props.isValidated} {...routerProps} />} />
+
+                    <Route path="/contact" render={routerProps => <ContactPage {...routerProps} />} />
 
                     <Route path="/" render={routerProps => <ListProducts resetMessage={this.props.resetMessage} sendMessage={this.props.sendMessage} products={this.props.products} {...routerProps} />} />
 
