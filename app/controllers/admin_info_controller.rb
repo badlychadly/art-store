@@ -12,6 +12,14 @@ class AdminInfoController < ApplicationController
         render json: admin, only: [:about], status: 200
     end
 
+    def messages
+        
+    end
+
+    def create_messages
+        binding.pry
+    end
+
     private
     
     def admin_params

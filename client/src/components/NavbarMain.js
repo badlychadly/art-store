@@ -61,7 +61,7 @@ export default class NavbarMain extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    Messages
                   </DropdownItem>
                   <DropdownItem>
                     Option 2
