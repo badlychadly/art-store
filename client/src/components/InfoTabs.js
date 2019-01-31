@@ -44,6 +44,15 @@ export default class InfoTabs extends React.Component {
               Prints
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '3' })}
+              style={{cursor:'pointer'}}
+              onClick={() => { this.toggle('3'); }}
+            >
+              Purchase
+            </NavLink>
+          </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
