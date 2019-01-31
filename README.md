@@ -6,7 +6,7 @@ art-store is an online store to give an artist the power to manage and sell thei
 
 This app uses Rails Api 5.2.1 for the backend and React 16.7.0 for the frontend. It also uses a cloudinary which requires an account [cloudinary](https://cloudinary.com/) to store images.
 
-##Installation
+## Installation
 
 To run this app on your local machine in the dev environment fork and clone this repo.
 
@@ -42,12 +42,12 @@ This app uses the gem [Foreman](https://github.com/ddollar/foreman) to run the f
 rake start
 ```
 
-##Usage
+## Usage
 You will need to create a new admin in the rails server with a password and email, there is seed data available although it is not recommended because the Products model will have trouble saving your url as the carrierwave picture uploader attribute, so it is best to just start from scratch and use the form on the site.
 
 
-##Contributing
+## Contributing
 If you wish to report any bugs or have improved the code I would like to hear from you so reach out to me on github with a pull request or open an issue.
 
-##License 
+## License 
 This app contains an MIT License in the root directory
