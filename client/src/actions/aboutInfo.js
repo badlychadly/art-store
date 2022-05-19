@@ -1,7 +1,8 @@
 
 export const getInfo = () => {
+    debugger;
     return dispatch => {
-        return fetch('http://10.0.0.99:3001/about').then(resp => resp.json())
+        return fetch('http://10.0.0.156:3001/about').then(resp => resp.json())
         .then(about => {
             dispatch({type: "GET_ABOUT_SUCCESS", about})
         })
@@ -11,7 +12,7 @@ export const getInfo = () => {
 export const updateInfo = (info) => {
     const headers = Object.assign({'Content-Type': 'application/json'}, {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`})
     return dispatch => {
-        return fetch('http://10.0.0.99:3001/about', {
+        return fetch('http://10.0.0.156:3001/about', {
             method: "PUT",
             headers: headers,
             body: JSON.stringify(info)

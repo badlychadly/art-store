@@ -7,8 +7,13 @@ class ProductsApi {
 
 
     static getAllProducts() {
-        return fetch("http://10.0.0.99:3001/products")
-        .then(resp => resp.json())
+        return fetch("http://10.0.0.156:3001/products")
+        .then(resp => {
+            debugger
+            console.log(resp)
+            return resp.json()
+        }
+        )
     }
 
 
@@ -21,7 +26,7 @@ class ProductsApi {
         data.append('img_url', formData.img_url)
         data.append('cloud', formData.picture.cloud)
         data.append('prints', formData.prints)
-        return fetch('http://10.0.0.99:3001/products', {
+        return fetch('http://10.0.0.156:3001/products', {
             method: "POST",
             // headers: headers,
             // body: JSON.stringify(formData)
@@ -35,7 +40,7 @@ class ProductsApi {
 
     static updateProduct(product) {
         const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders());
-        return fetch(`http://10.0.0.99:3001/products/${product.id}`, {
+        return fetch(`http://10.0.0.156:3001/products/${product.id}`, {
             method: "PUT",
             headers: headers,
             body: JSON.stringify(product)
@@ -47,7 +52,7 @@ class ProductsApi {
     static deleteProduct(product) {
     const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders());
     
-    return fetch(`http://10.0.0.99:3001/products/${product.id}`, {
+    return fetch(`http://10.0.0.156:3001/products/${product.id}`, {
         method: "DELETE",
         headers: headers,
         body: JSON.stringify(product)

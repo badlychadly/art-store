@@ -6,7 +6,7 @@ class SessionApi {
 
 
   static login(credentials) {
-    // const request = new Request('http://10.0.0.99:3001/login', {
+    // const request = new Request('http://10.0.0.156:3001/login', {
     //   method: 'POST',
     //   headers: new Headers({
     //     'Content-Type': 'application/json'
@@ -14,7 +14,7 @@ class SessionApi {
     //   body: JSON.stringify({auth: credentials})
     // });
 
-      return fetch('http://10.0.0.99:3001/login', {
+      return fetch('http://10.0.0.156:3001/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ class SessionApi {
 
     static logout() {
       const headers = this.requestHeaders()
-      return fetch('http://10.0.0.99:3001/logout', {
+      return fetch('http://10.0.0.156:3001/logout', {
         method: 'POST',
         headers: headers
       })
@@ -54,7 +54,7 @@ class SessionApi {
 
     static verifyAdmin() {
       const headers = this.requestHeaders()
-      return fetch('http://10.0.0.99:3001/verify_admin', {
+      return fetch('http://10.0.0.156:3001/verify_admin', {
         method: 'GET',
         headers: headers
       })
